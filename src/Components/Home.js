@@ -10,8 +10,8 @@ const Home = () => {
       <p>Welcome to City Tours! Where would you like to go?</p>
       <form className="home-form">
         <label htmlFor="home-city">Select a City</label>
-        <select className="home-city">
-          <option value="" disabled selected="selected">Choose a city</option>
+        <select className="home-city" defaultValue={"DEFAULT"}>
+          <option value="DEFAULT" disabled>Choose a city</option>
           <option>Birmingham</option>
           <option>Glasgow</option>
           <option>Liverpool</option>
