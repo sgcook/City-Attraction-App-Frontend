@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { GoogleMap, MarkerF, DirectionsRenderer } from "@react-google-maps/api";
 import "../Styles/direction.css";
+import PropTypes from "prop-types";
 
 const Direction = ({ setButtonClicked }) => {
   // const fetchDirection = () => {
@@ -52,6 +53,10 @@ const Direction = ({ setButtonClicked }) => {
       </button>
     </div>
   );
+};
+
+Direction.propTypes = {
+  setButtonClicked: PropTypes.func.isRequired,
 };
 
 export default Direction;

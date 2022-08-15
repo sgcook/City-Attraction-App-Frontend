@@ -1,29 +1,16 @@
 import React, { useState } from "react";
 import { GoogleMap, MarkerF, DirectionsRenderer } from "@react-google-maps/api";
+import PropTypes from "prop-types";
 import "../Styles/map.css";
-import Markers from "../Markers.json";
+import { findAverageCoords } from "../helpers";
 
-const Map = () => {
+const Map = ({ fiveRestaurants, restaurantWaypoints }) => {
   const [itineraryDirections, setItineraryDirections] = useState();
-
-  const fiveRestaurants = Markers.slice(0, 5);
-  const restaurantWaypoints = fiveRestaurants.map((place) => {
-    return {
-      location: { lat: place.coordinates[0], lng: place.coordinates[1] },
-    };
-  });
 
   const latCoords = fiveRestaurants.map((place) => place.coordinates[0]);
   const lngcoords = fiveRestaurants.map((place) => place.coordinates[1]);
 
-  const findAverageCoords = () => {
-    const latAverage = latCoords.reduce((a, b) => a + b, 0) / latCoords.length;
-    const lngAverage = lngcoords.reduce((a, b) => a + b, 0) / lngcoords.length;
-
-    const coords = [];
-    coords.push(latAverage, lngAverage);
-    return coords;
-  };
+  findAverageCoords(latCoords, lngcoords);
 
   const averageCoords = findAverageCoords(latCoords, lngcoords);
   const stationCoords = [55.859120812594185, -4.258096061153975];
@@ -86,6 +73,26 @@ const Map = () => {
       </div>
     </div>
   );
+};
+
+Map.propTypes = {
+  fiveRestaurants: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      restaurant: PropTypes.string,
+      address: PropTypes.string,
+      price: PropTypes.string,
+      rating: PropTypes.string,
+      category: PropTypes.string,
+      coordinates: PropTypes.arrayOf(PropTypes.number),
+    })
+  ).isRequired,
+  restaurantWaypoints: PropTypes.arrayOf(
+    PropTypes.shape({
+      lat: PropTypes.number,
+      lng: PropTypes.number,
+    })
+  ).isRequired,
 };
 
 export default Map;
