@@ -77,7 +77,9 @@ const Map = () => {
           <h2>Stops</h2>
           <ul className="itinerary-restaurants">
             {fiveRestaurants.map((restaurant) => (
-              <li className="restaurant">{restaurant.restaurant}</li>
+              <li className="restaurant" key={restaurant.restaurant}>
+                {restaurant.restaurant}
+              </li>
             ))}
           </ul>
         </div>
