@@ -70,6 +70,7 @@ const Direction = ({ allPlaces, setButtonClicked }) => {
           center={{ lat: averageCoords[0], lng: averageCoords[1] }}
           mapContainerClassName="map-container"
         >
+          {console.log(pathway)}
           {pathway.map((place) => (
             <MarkerF
               key={place.coordinates}
