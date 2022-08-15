@@ -1,5 +1,40 @@
-.map-container {
-  height: 90vh;
-  width: 90%;
-  margin: 30px auto;
+.itinerary-header {
+  text-align: center;
 }
+
+.itinerary-stops {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.map-container {
+  height: 60vh;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.itinerary-restaurants {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.restaurant {
+  padding-bottom: 10px;
+  font-size: 20px;
+}
+
+@media screen and (min-device-width: 1200px) {
+  .itinerary-flex {
+    display: flex;
+  }
+  
+  .itinerary-stops {
+    width: 50%;
+  }
+  
+  .map-container {
+    height: 80vh;
+    width: 90%;
+  }
+}
+

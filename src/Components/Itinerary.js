@@ -1,8 +1,6 @@
 import React from "react";
+import { useLoadScript } from "@react-google-maps/api";
 import Map from "./Map";
-import {
-  useLoadScript,
-} from "@react-google-maps/api";
 
 const Itinerary = () => {
   const { isLoaded } = useLoadScript({
@@ -10,10 +8,17 @@ const Itinerary = () => {
   });
 
   if (!isLoaded) {
-    return (<div><h1>Loading...</h1></div>)
-  } else {
-    return (<div><Map /></div>)
+    return (
+      <div>
+        <h1>Loading...</h1>
+      </div>
+    );
   }
+  return (
+    <div>
+      <Map />
+    </div>
+  );
 };
 
 export default Itinerary;
