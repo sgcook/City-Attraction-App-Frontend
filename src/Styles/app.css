@@ -1,0 +1,29 @@
+.home {
+    text-align: center;
+    color: black;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.navbar {
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;}
+
+select {
+    margin: 5px;
+    border-radius: 10px;
+    width: 110px;
+    height: 25px;    
+}
+
+input {
+    margin: 5px;
+    border-radius: 10px;
+    width: 110px;
+    height: 20px;    
+}
+
+button {
+    border-radius: 10px;
+    height: 25px;
+    margin: 10px;
+}
