@@ -4,7 +4,8 @@ import "../Styles/map.css";
 import Markers from "../Markers.json";
 
 const Map = () => {
-  const [directions, setDirections] = useState();
+  const [itineraryDirections, setItineraryDirections] = useState();
+
   const fiveRestaurants = Markers.slice(0, 5);
   const restaurantWaypoints = fiveRestaurants.map((place) => {
     return {
@@ -40,7 +41,7 @@ const Map = () => {
       },
       (result, status) => {
         if (status === "OK" && result) {
-          setDirections(result);
+          setItineraryDirections(result);
         } else {
           console.log("error");
         }
@@ -49,42 +50,41 @@ const Map = () => {
   };
 
   return (
-    <>
-      <h2 className="itinerary-header">Itinerary</h2>
-      <div className="itinerary-flex">
-        <GoogleMap
-          zoom={13.5}
-          center={{ lat: averageCoords[0], lng: averageCoords[1] }}
-          mapContainerClassName="map-container"
-        >
+    <div className="map">
+      <GoogleMap
+        zoom={13.5}
+        center={{ lat: averageCoords[0], lng: averageCoords[1] }}
+        mapContainerClassName="map-container"
+      >
+        <MarkerF
+          key={stationCoords}
+          position={{ lat: stationCoords[0], lng: stationCoords[1] }}
+        />
+        {fiveRestaurants.map((place) => (
           <MarkerF
-            key={stationCoords}
-            position={{ lat: stationCoords[0], lng: stationCoords[1] }}
+            key={place.coordinates[0]}
+            position={{
+              lat: place.coordinates[0],
+              lng: place.coordinates[1],
+            }}
+            onLoad={fetchDirections}
           />
-          {fiveRestaurants.map((place) => (
-            <MarkerF
-              key={place.coordinates[0]}
-              position={{
-                lat: place.coordinates[0],
-                lng: place.coordinates[1],
-              }}
-              onLoad={fetchDirections}
-            />
+        ))}
+        {itineraryDirections && (
+          <DirectionsRenderer directions={itineraryDirections} />
+        )}
+      </GoogleMap>
+      <div className="map-stops">
+        <h2>Stops</h2>
+        <ul className="map-restaurants">
+          {fiveRestaurants.map((restaurant) => (
+            <li className="restaurant" key={restaurant.restaurant}>
+              {restaurant.restaurant}
+            </li>
           ))}
-          {directions && <DirectionsRenderer directions={directions} />}
-        </GoogleMap>
-        <div className="itinerary-stops">
-          <h2>Stops</h2>
-          <ul className="itinerary-restaurants">
-            {fiveRestaurants.map((restaurant) => (
-              <li className="restaurant" key={restaurant.restaurant}>
-                {restaurant.restaurant}
-              </li>
-            ))}
-          </ul>
-        </div>
+        </ul>
       </div>
-    </>
+    </div>
   );
 };
 

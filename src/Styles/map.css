@@ -1,19 +1,14 @@
-.itinerary-header {
-  text-align: center;
-}
-
-.itinerary-stops {
+.map-stops {
   margin: 0 auto;
-  text-align: center;
 }
 
 .map-container {
-  height: 60vh;
+  height: 55vh;
   width: 80%;
   margin: 0 auto;
 }
 
-.itinerary-restaurants {
+.map-restaurants {
   padding-left: 0;
   list-style-type: none;
 }
@@ -23,18 +18,26 @@
   font-size: 20px;
 }
 
+.map-button {
+  margin: 0 auto;
+}
+
 @media screen and (min-device-width: 1200px) {
-  .itinerary-flex {
+  .map {
     display: flex;
   }
   
-  .itinerary-stops {
-    width: 50%;
+  .map-stops {
+    width: 25%;
   }
   
   .map-container {
     height: 80vh;
-    width: 90%;
+    width: 70%;
+  }
+
+  .map-button {
+    margin-top: 10px;
   }
 }
 

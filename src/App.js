@@ -11,12 +11,12 @@ const App = () => {
     <div className="App">
       <header className="App-header">
         <Navbar />
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/itinerary" element={<Itinerary />} />
-          <Route exact path="/about" element={<About />} />
-        </Routes>
       </header>
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/itinerary" element={<Itinerary />} />
+        <Route exact path="/about" element={<About />} />
+      </Routes>
     </div>
   );
 };

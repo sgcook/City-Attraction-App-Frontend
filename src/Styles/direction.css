@@ -1,0 +1,8 @@
+.directions {
+  text-align: center;
+}
+
+.full-directions {
+  display: block;
+  margin: 0 auto 10px auto;
+}
