@@ -11,7 +11,9 @@ const Home = () => {
       <form className="home-form">
         <label htmlFor="home-city">Select a City</label>
         <select className="home-city" defaultValue={"DEFAULT"}>
-          <option value="DEFAULT" disabled>Choose a city</option>
+          <option value="DEFAULT" disabled>
+            Choose a city
+          </option>
           <option>Birmingham</option>
           <option>Glasgow</option>
           <option>Liverpool</option>
