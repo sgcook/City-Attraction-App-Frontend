@@ -6,19 +6,22 @@ import { findAverageCoords } from "../helpers";
 
 const Direction = ({ allPlaces, setButtonClicked }) => {
   const [averageCoords, setAverageCoords] = useState(null);
-  const [direction, setDirection] = useState();
-  const [pathway, setPathway] = useState([allPlaces[0], allPlaces[1]]);
-  const [x, setX] = useState(0);
+  const [direction, setDirection] = useState([]);
+  const pathway = allPlaces;
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    setX(1);
-  }, []);
-
-  useEffect(() => {
-    const latCoords = pathway.map((place) => place.coordinates[0]);
-    const lngCoords = pathway.map((place) => place.coordinates[1]);
+    const latCoords = [
+      pathway[index].coordinates[0],
+      pathway[index + 1].coordinates[0],
+    ];
+    const lngCoords = [
+      pathway[index].coordinates[1],
+      pathway[index + 1].coordinates[1],
+    ];
     setAverageCoords(findAverageCoords(latCoords, lngCoords));
-  }, [pathway]);
+    setDirection([]);
+  }, [index, pathway]);
 
   const fetchDirection = () => {
     const DirectionsService = new window.google.maps.DirectionsService();
@@ -26,12 +29,12 @@ const Direction = ({ allPlaces, setButtonClicked }) => {
     DirectionsService.route(
       {
         origin: {
-          lat: pathway[0].coordinates[0],
-          lng: pathway[0].coordinates[1],
+          lat: pathway[index].coordinates[0],
+          lng: pathway[index].coordinates[1],
         },
         destination: {
-          lat: pathway[1].coordinates[0],
-          lng: pathway[1].coordinates[1],
+          lat: pathway[index + 1].coordinates[0],
+          lng: pathway[index + 1].coordinates[1],
         },
         travelMode: window.google.maps.TravelMode.WALKING,
       },
@@ -46,16 +49,14 @@ const Direction = ({ allPlaces, setButtonClicked }) => {
   };
 
   const moveBack = () => {
-    setX(x - 1);
-    setPathway([allPlaces[x - 2], allPlaces[x - 1]]);
+    setIndex(index - 1);
   };
 
   const moveForward = () => {
-    setX(x + 1);
-    setPathway([allPlaces[x], allPlaces[x + 1]]);
+    setIndex(index + 1);
   };
 
-  if (averageCoords && pathway) {
+  if (averageCoords) {
     return (
       <div className="directions">
         <button
@@ -66,26 +67,30 @@ const Direction = ({ allPlaces, setButtonClicked }) => {
           Full directions
         </button>
         <GoogleMap
-          zoom={13.5}
+          zoom={15}
           center={{ lat: averageCoords[0], lng: averageCoords[1] }}
           mapContainerClassName="map-container"
+          onCenterChanged={fetchDirection}
         >
-          {console.log(pathway)}
-          {pathway.map((place) => (
-            <MarkerF
-              key={place.coordinates}
-              position={{
-                lat: place.coordinates[0],
-                lng: place.coordinates[1],
-              }}
-              onLoad={fetchDirection}
-            />
-          ))}
+          <MarkerF
+            key={pathway[index].coordinates}
+            position={{
+              lat: pathway[index].coordinates[0],
+              lng: pathway[index].coordinates[1],
+            }}
+          />
+          <MarkerF
+            key={pathway[index + 1].coordinates}
+            position={{
+              lat: pathway[index + 1].coordinates[0],
+              lng: pathway[index + 1].coordinates[1],
+            }}
+          />
           {direction && <DirectionsRenderer directions={direction} />}
         </GoogleMap>
-        <p>Start: {pathway[0].restaurant}</p>
-        <p>Stop: {pathway[1].restaurant}</p>
-        {x > 1 && (
+        <p>Start: {pathway[index].restaurant}</p>
+        <p>Stop: {pathway[index + 1].restaurant}</p>
+        {index > 0 && (
           <button
             type="button"
             onClick={moveBack}
@@ -94,7 +99,7 @@ const Direction = ({ allPlaces, setButtonClicked }) => {
             Back
           </button>
         )}
-        {x < allPlaces.length - 1 && (
+        {index < allPlaces.length - 2 && (
           <button
             type="button"
             onClick={moveForward}
