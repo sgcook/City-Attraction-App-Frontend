@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { GoogleMap, MarkerF, DirectionsRenderer } from "@react-google-maps/api";
 import PropTypes from "prop-types";
-import "../Styles/map.css";
 import { findAverageCoords } from "../helpers";
 
 const Map = ({ fiveRestaurants, restaurantWaypoints }) => {
@@ -61,7 +60,7 @@ const Map = ({ fiveRestaurants, restaurantWaypoints }) => {
           <DirectionsRenderer directions={itineraryDirections} />
         )}
       </GoogleMap>
-      <div className="map-stops">
+      <div className="map-text">
         <h2>Stops</h2>
         <ul className="map-restaurants">
           {fiveRestaurants.map((restaurant) => (

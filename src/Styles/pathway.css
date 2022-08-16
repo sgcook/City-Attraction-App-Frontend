@@ -6,3 +6,12 @@
   display: block;
   margin: 0 auto 10px auto;
 }
+
+.pathway-text {
+  margin: 10px;
+}
+
+.pathway-p {
+  margin-bottom: 10px;
+  text-align: left;
+}
