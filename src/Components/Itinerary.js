@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useLoadScript } from "@react-google-maps/api";
 import Map from "./Map";
-import Direction from "./Direction";
+import Pathway from "./Pathway";
 import "../Styles/itinerary.css";
 import Markers from "../Markers.json";
 
@@ -39,7 +39,7 @@ const Itinerary = () => {
   }
   if (buttonClicked) {
     return (
-      <Direction allPlaces={allPlaces} setButtonClicked={setButtonClicked} />
+      <Pathway allPlaces={allPlaces} setButtonClicked={setButtonClicked} />
     );
   }
   return (

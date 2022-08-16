@@ -4,7 +4,7 @@ import "../Styles/direction.css";
 import PropTypes from "prop-types";
 import { findAverageCoords } from "../helpers";
 
-const Direction = ({ allPlaces, setButtonClicked }) => {
+const Pathway = ({ allPlaces, setButtonClicked }) => {
   const [averageCoords, setAverageCoords] = useState(null);
   const [direction, setDirection] = useState([]);
   const pathway = allPlaces;
@@ -88,8 +88,31 @@ const Direction = ({ allPlaces, setButtonClicked }) => {
           />
           {direction && <DirectionsRenderer directions={direction} />}
         </GoogleMap>
-        <p>Start: {pathway[index].restaurant}</p>
-        <p>Stop: {pathway[index + 1].restaurant}</p>
+        <div className="pathway-start">
+          <p>Start: {pathway[index].restaurant}</p>
+          <p>
+            Address:{" "}
+            {direction.routes && direction.routes[0].legs[0].start_address}
+          </p>
+        </div>
+        <div className="pathway-stop">
+          <p>Stop: {pathway[index + 1].restaurant}</p>
+          <p>
+            Address:{" "}
+            {direction.routes && direction.routes[0].legs[0].end_address}
+          </p>
+        </div>
+        {direction.routes &&
+          direction.routes[0].legs[0].steps.map((step) => {
+            return (
+              <li key={step.encoded_lat_lngs}>
+                {step.instructions
+                  .replace(/<(.*?)>/gi, " ")
+                  .replace(/\s\sDestination/gi, ". Destination")}
+              </li>
+            );
+          })}
+        {direction.routes && console.log(direction.routes[0].legs[0])}
         {index > 0 && (
           <button
             type="button"
@@ -114,7 +137,7 @@ const Direction = ({ allPlaces, setButtonClicked }) => {
   return <h1>Loading...</h1>;
 };
 
-Direction.propTypes = {
+Pathway.propTypes = {
   allPlaces: PropTypes.arrayOf(
     PropTypes.shape({
       restaurant: PropTypes.string,
@@ -124,4 +147,4 @@ Direction.propTypes = {
   setButtonClicked: PropTypes.func.isRequired,
 };
 
-export default Direction;
+export default Pathway;
