@@ -1,19 +1,27 @@
-import React from "react";
+/* eslint-disable react/no-unescaped-entities */
+import {React, useState } from "react";
+import CuisineForm from "./CuisineForm";
 
 const EatDrinkForm = () => {
+    const [cuisine, setCuisine] = useState(false);
     return (
-<div>
-    <p>I`&apos;`m looking for...</p>
-        <label htmlFor="eatdrinktype">
-            Restaurants
-            <input type="checkbox" id="restaurants" name="restaurants" value="yes"></input>
-            Cafés
-            <input type="checkbox" id="cafes" name="cafes" value="yes"></input>
-            Pubs/Bars
-            <input type="checkbox" id="pubs/bars" name="pubs/bars" value="yes"></input>
-        </label>
-    <button type="submit">Go!</button>
-</div>
-)};
+        <div>
+            <p>I'm looking for...</p>
+                <label htmlFor="eatdrinktype">
+                Restaurants
+                <input type="checkbox" id="restaurants" name="restaurants" onChange={()=> setCuisine (!cuisine)}value="yes"></input>
+                <br></br>
+                Cafés
+                <input type="checkbox" id="cafes" name="cafes" value="yes"></input>
+                <br></br>
+                Pubs/Bars
+                <input type="checkbox" id="pubs/bars" name="pubs/bars" value="yes"></input>
+                <br></br>
+                Any
+                <input type="checkbox" id="any" name="any" value="yes"></input>
+                </label>
+                {cuisine && (<CuisineForm />)}
+            </div>
+        )};
   
-  export default EatDrinkForm;
+export default EatDrinkForm;
