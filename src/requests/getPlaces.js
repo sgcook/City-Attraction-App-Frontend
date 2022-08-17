@@ -1,13 +1,30 @@
 import axios from "axios";
 
-const getPlaces = () => {
-  // const baseUrl = dev ? "localhost:3000" : "otherThing";
+const getPlaces = (
+  city,
+  restaurantType,
+  cuisine,
+  mobility,
+  museum,
+  garden,
+  landmarks
+) => {
+  // const baseUrl = dev ? "localhost:3000" : "actualURL";
   const data = "";
   const config = {
     method: "get",
-    url: "http://localhost:3000/pathway",
+    url: `http://localhost:3000/pathway`,
     headers: {},
     data,
+    params: {
+      city,
+      restaurantType,
+      cuisine,
+      mobility,
+      museum,
+      garden,
+      landmarks,
+    },
   };
 
   return axios(config)
