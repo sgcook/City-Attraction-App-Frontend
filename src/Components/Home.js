@@ -101,7 +101,7 @@ const Home = () => {
              <label htmlFor="interest-in">
             <p>I'm interested in...</p>
             Eating/Drinking
-           <input type="checkbox" id="eatingdrinking" name="eatingdrinking" checked={()=> setEatingDrinking(!eatingDrinking)} value="yes"></input>
+           <input type="checkbox" id="eatingdrinking" name="eatingdrinking" onChange={()=> setEatingDrinking(!eatingDrinking)} value="yes"></input>
             <br></br>
             Attractions
           <input type="checkbox" id="attractions" name="attractions" onChange={()=> setAttractions(!attractions)}value="yes"></input>
@@ -113,12 +113,6 @@ const Home = () => {
         </form>
       </div>
     )}
-  // } else if(eatingDrinking) {
-  // return (<EatDrinkForm/>)
-
-  // } else if(attractions) {
-  // return (<AttractionsForm/>)  
-  // }
 };
 
 export default Home;
