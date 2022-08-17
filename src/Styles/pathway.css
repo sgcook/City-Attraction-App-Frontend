@@ -1,0 +1,30 @@
+.directions {
+  text-align: center;
+}
+
+.full-directions {
+  display: block;
+  margin: 0 auto 10px auto;
+}
+
+.pathway-header {
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+.pathway-text {
+  margin: 8px;
+}
+
+.pathway-ol {
+  margin: 5px auto;
+  list-style-position: inside;
+  text-align: left;
+  
+}
+
+@media screen and (min-device-width: 1200px) {
+  .pathway-li {
+    margin-left: auto;
+  }
+}
