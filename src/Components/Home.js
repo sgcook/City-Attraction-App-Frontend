@@ -2,24 +2,22 @@
 import React, { useState } from "react";
 import EatDrinkForm from "./EatDrinkForm";
 import AttractionsForm from "./AttractionsForm";
-// import CuisineForm from "./CuisineForm";
 
 const Home = () => {
   const [eatingDrinking, setEatingDrinking] = useState(false);
   const [attractions, setAttractions] = useState(false);
   
-  if(!eatingDrinking || !attractions) {
+  // if(!eatingDrinking || !attractions) {
     return (
       <div className="home">
         <div className="home-header">
-          <h1>City Tours</h1>
-          <h2>Title Placeholder!</h2>
+          <h1>CityWalk</h1>
         </div>
-          <p>Welcome to City Tours! Where would you like to go?</p>
+          <p>We'll plan your walking tour of the city. Where are you going?</p>
             <form className="home-form">
             <label htmlFor="home-city">
           <p>I'm going to...</p>
-            <select className="home-city" defaultValue={"DEFAULT"}>
+            <select className="select" defaultValue={"DEFAULT"}>
               <option value="DEFAULT" disabled>Choose a city</option>
               <option>Birmingham</option>
               <option>Glasgow</option>
@@ -28,19 +26,18 @@ const Home = () => {
               <option>Manchester</option>
             </select>
             </label>
-              <label htmlFor="start-date">
               <p>On...</p>
               <label htmlFor="startdate">
                 <input
+                  className="input"
                   id="startdate"
                   name="startdate"
                   placeholder="DD/MM/YYYY"
                 />
               </label>
-              </label>
               <p>between...</p>
              <label htmlFor="start-time">
-              <select className="start-time">
+              <select className="select">
               <option>00:00</option>
               <option>01:00</option>
               <option>02:00</option>
@@ -70,7 +67,7 @@ const Home = () => {
             </label>
             <label htmlFor="end-time">
               and
-              <select className="end-time">
+              <select className="select">
               <option>00:00</option>
               <option>01:00</option>
               <option>02:00</option>
@@ -97,22 +94,29 @@ const Home = () => {
               <option>23:00</option>
               <option>24:00</option>
               </select>
-            </label>
+              <p>How much walking do you want to do?</p>
+              <label htmlFor="walking">
+              <select className="select">
+              <option>minimum</option>
+              <option>moderate</option>
+              <option>plenty</option>
+              </select>
+              </label>
+             </label>
              <label htmlFor="interest-in">
             <p>I'm interested in...</p>
             Eating/Drinking
            <input type="checkbox" id="eatingdrinking" name="eatingdrinking" onChange={()=> setEatingDrinking(!eatingDrinking)} value="yes"></input>
             <br></br>
             Attractions
-          <input type="checkbox" id="attractions" name="attractions" onChange={()=> setAttractions(!attractions)}value="yes"></input>
+          <input type="checkbox" id="attractions" name="attractions" onChange={()=> setAttractions(!attractions)} value="yes"></input>
           <br></br>
           </label>
           {eatingDrinking && (<EatDrinkForm />)}
           {attractions && (<AttractionsForm />)}
-          <button type="submit">Go!</button>
+          <button type="submit">Plan my day!</button>
         </form>
       </div>
-    )}
-};
+    )};
 
 export default Home;
