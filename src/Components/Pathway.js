@@ -92,25 +92,37 @@ const Pathway = ({ allPlaces, setButtonClicked }) => {
           <div className="map-text">
             <div className="pathway-text">
               <p className="pathway-header">
-                Start: {pathway[index].restaurant}
+                <b>Start: </b>
+                {pathway[index].restaurant}
               </p>
-              <p>
-                Address:{" "}
+              <p className="pathway-header">
+                <b>Address: </b>
                 {direction.routes && direction.routes[0].legs[0].start_address}
               </p>
             </div>
             <div className="pathway-text">
-              <p>Stop: {pathway[index + 1].restaurant}</p>
-              <p>
-                Address:{" "}
+              <p className="pathway-header">
+                <b>Stop: </b>
+                {pathway[index + 1].restaurant}
+              </p>
+              <p className="pathway-header">
+                <b>Address: </b>
                 {direction.routes && direction.routes[0].legs[0].end_address}
               </p>
+              <p className="pathway-header">
+                <b>Distance: </b>
+                {direction.routes && direction.routes[0].legs[0].distance.text}
+              </p>
+              <p className="pathway-header">
+                <b>Estimated time: </b>
+                {direction.routes && direction.routes[0].legs[0].duration.text}
+              </p>
             </div>
-            <ol>
+            <ol className="pathway-ol">
               {direction.routes &&
                 direction.routes[0].legs[0].steps.map((step) => {
                   return (
-                    <li key={step.encoded_lat_lngs} className="pathway-p">
+                    <li key={step.encoded_lat_lngs} className="pathway-li">
                       {step.instructions
                         .replace(/<(.*?)>/gi, " ")
                         .replace(/\s\sDestination/gi, ". Destination")}

@@ -7,11 +7,24 @@
   margin: 0 auto 10px auto;
 }
 
-.pathway-text {
-  margin: 10px;
+.pathway-header {
+  margin-top: 5px;
+  margin-bottom: 0;
 }
 
-.pathway-p {
-  margin-bottom: 10px;
+.pathway-text {
+  margin: 8px;
+}
+
+.pathway-ol {
+  margin: 5px auto;
+  list-style-position: inside;
   text-align: left;
+  
+}
+
+@media screen and (min-device-width: 1200px) {
+  .pathway-li {
+    margin-left: auto;
+  }
 }

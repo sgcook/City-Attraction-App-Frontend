@@ -3,22 +3,29 @@
 }
 
 .map-text {
-  margin: 5vh auto;
+  margin: 2vh auto;
 }
 
 .map-container {
-  height: 55vh;
+  min-height: 45vh;
+  max-height: 55vh;
   width: 80%;
   margin: 0 auto;
 }
 
+.map-stops {
+  margin-bottom: 0;
+
+}
+
 .map-restaurants {
+  margin-top: 5px;
   padding-left: 0;
   list-style-type: none;
 }
 
 .restaurant {
-  padding-bottom: 10px;
+  padding-bottom: 8px;
   font-size: 20px;
 }
 

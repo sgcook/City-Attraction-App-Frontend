@@ -35,6 +35,23 @@ const Map = ({ fiveRestaurants, restaurantWaypoints }) => {
     );
   };
 
+  let distance = 0;
+  let time = 0;
+  let hours = 0;
+  let minutes = 0;
+  if (itineraryDirections) {
+    itineraryDirections.routes[0].legs.forEach((leg) => {
+      distance += leg.distance.value;
+    });
+    itineraryDirections.routes[0].legs.forEach((leg) => {
+      time += leg.duration.value;
+    });
+    distance /= 1000;
+    time /= 60;
+    hours = Math.floor(time / 60);
+    minutes = time % 60;
+  }
+
   return (
     <div className="map">
       <GoogleMap
@@ -61,7 +78,7 @@ const Map = ({ fiveRestaurants, restaurantWaypoints }) => {
         )}
       </GoogleMap>
       <div className="map-text">
-        <h2>Stops</h2>
+        <h2 className="map-stops">Stops</h2>
         <ul className="map-restaurants">
           {fiveRestaurants.map((restaurant) => (
             <li className="restaurant" key={restaurant.restaurant}>
@@ -69,6 +86,14 @@ const Map = ({ fiveRestaurants, restaurantWaypoints }) => {
             </li>
           ))}
         </ul>
+        <p>
+          <b>Total Distance: </b>
+          {Math.round(distance * 10) / 10} km
+        </p>
+        <p>
+          <b>Estimated time: </b>
+          {hours} hour(s) {Math.round(minutes)} minute(s)
+        </p>
       </div>
     </div>
   );
