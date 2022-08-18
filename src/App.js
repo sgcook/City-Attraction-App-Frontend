@@ -8,7 +8,7 @@ import About from "./Components/About";
 import Home from "./Components/Home";
 
 const App = () => {
-  const [markers, setMarkers] = useState(null);
+  const [markers, setMarkers] = useState(true);
   return (
     <div className="App">
       <header className="App-header">
@@ -19,7 +19,7 @@ const App = () => {
         <Navbar markers={markers} />
       </header>
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        <Route exact path="/" element={<Home setMarkers={setMarkers} />} />
         <Route exact path="/itinerary" element={<Itinerary />} />
         <Route exact path="/about" element={<About />} />
       </Routes>

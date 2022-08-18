@@ -1,10 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import EatDrinkForm from "./EatDrinkForm";
 import AttractionsForm from "./AttractionsForm";
 
-const Home = () => {
+const Home = ({ setMarkers }) => {
   const [eatingDrinking, setEatingDrinking] = useState(false);
   const [attractions, setAttractions] = useState(false);
   const toggleSelection = (e) => {
@@ -134,14 +135,24 @@ const Home = () => {
         </label>
         {eatingDrinking && <EatDrinkForm />}
         {attractions && <AttractionsForm />}
-        <Link to="/itinerary">
-          <button type="submit" to="/itinerary">
-            Plan my trip!
+        <Link className="navbar-item" to="/itinerary">
+          <button
+            type="submit"
+            onClick={() => {
+              /* Will have to change to be response from backend */
+              setMarkers(true);
+            }}
+          >
+            Plan my day!
           </button>
         </Link>
       </form>
     </div>
   );
+};
+
+Home.propTypes = {
+  setMarkers: PropTypes.func.isRequired,
 };
 
 export default Home;
