@@ -4,7 +4,7 @@ const CuisineForm = () => {
     return (
     <div>
         <p>Great! What kind of food do you like?</p>
-            <label htmlFor="cuisine">
+            <label htmlFor="cuisine" className="checkbox">
             Asian
             <input type="checkbox" id="asian" name="restaurants" value="yes"></input>
             British/American

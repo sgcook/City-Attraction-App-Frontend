@@ -5,7 +5,7 @@ const AttractionsForm = () => {
     return (
     <div>
     <p>I'd like to visit...</p>
-        <label htmlFor="attractions">
+        <label htmlFor="attractions" className="checkbox">
             Museums/Galleries
             <input type="checkbox" id="museumsgalleries" name="museumsgalleries" value="yes"></input>
             <br></br>

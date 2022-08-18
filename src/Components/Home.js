@@ -15,6 +15,7 @@ const Home = () => {
     return (
       <div className="home">
         <div className="home-header">
+          {/* <img src={logo} alt="logo" className="logo"/> */}
           <h1>CityWalk</h1>
           </div>
             <p>We'll plan your walking tour of the city. Where are you going?</p>
@@ -107,19 +108,19 @@ const Home = () => {
               </select>
               </label>
              </label>
-             <label htmlFor="interest-in">
+             <label htmlFor="interest-in" className="checkbox">
             <p>I'm interested in...</p>
             Eating/Drinking
             <input type="checkbox" id="eatingdrinking" value={eatingDrinking} checked={eatingDrinking} name="eatingdrinking" onChange={toggleSelection}></input>
             <br></br>
             Attractions
-          <input type="checkbox" id="attractions" value={attractions} checked={attractions} name="attractions" onChange={toggleSelection}></input>
-          <br></br>
+            <input type="checkbox" id="attractions" value={attractions} checked={attractions} name="attractions" onChange={toggleSelection}></input>
+            <br></br>
           </label>
           {eatingDrinking && (<EatDrinkForm />)}
           {attractions && (<AttractionsForm />)}
           <Link to="/itinerary">
-          <button type="submit" to="/itinerary">Plan my day!</button>
+          <button type="submit" to="/itinerary">Plan my trip!</button>
           </Link>
         </form>
       </div>

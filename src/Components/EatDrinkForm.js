@@ -10,7 +10,7 @@ const EatDrinkForm = () => {
     return (
         <div>
             <p>I'm looking for...</p>
-                <label htmlFor="eatdrinktype">
+                <label htmlFor="eatdrinktype" className="checkbox">
                 Restaurants
                 <input type="checkbox" id="eatingdrinking" value={cuisine} checked={cuisine} name="eatingdrinking" onChange={toggleSelection}></input>
                 <br></br>
