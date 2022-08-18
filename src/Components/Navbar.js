@@ -10,6 +10,7 @@ const Navbar = ({ markers }) => {
         <Link className="navbar-item" to="/">
           Home
         </Link>
+        {console.log(markers)}
         {markers && (
           <Link className="navbar-item" to="/itinerary">
             Itinerary
