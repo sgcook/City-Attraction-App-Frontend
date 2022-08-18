@@ -1,14 +1,6 @@
 import axios from "axios";
 
-const getPlaces = (
-  city,
-  restaurantType,
-  cuisine,
-  mobility,
-  museum,
-  garden,
-  landmarks
-) => {
+const getPlaces = (city, restaurantType, cuisine, mobility, attractionType) => {
   // const baseUrl = dev ? "localhost:3000" : "actualURL";
   const data = "";
   const config = {
@@ -21,9 +13,7 @@ const getPlaces = (
       restaurantType,
       cuisine,
       mobility,
-      museum,
-      garden,
-      landmarks,
+      attractionType,
     },
   };
 
