@@ -1,9 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import EatDrinkForm from "./EatDrinkForm";
 import AttractionsForm from "./AttractionsForm";
 
-const Home = () => {
+const Home = ({ setMarkers }) => {
   const [eatingDrinking, setEatingDrinking] = useState(false);
   const [attractions, setAttractions] = useState(false);
 
@@ -128,10 +129,22 @@ const Home = () => {
         </label>
         {eatingDrinking && <EatDrinkForm />}
         {attractions && <AttractionsForm />}
-        <button type="submit">Plan my day!</button>
+        <button
+          type="submit"
+          onClick={() => {
+            /* Will have to change to be response from backend */
+            setMarkers(true);
+          }}
+        >
+          Plan my day!
+        </button>
       </form>
     </div>
   );
+};
+
+Home.propTypes = {
+  setMarkers: PropTypes.func.isRequired,
 };
 
 export default Home;
