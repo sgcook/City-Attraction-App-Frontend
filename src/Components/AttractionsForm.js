@@ -25,7 +25,7 @@ const AttractionsForm = () => {
         Landmarks/Monuments
         <input type="checkbox" id="indian" name="pubs/bars" value="yes" />
         <br />
-        Any `<input type="checkbox" id="any" name="any" value="yes" />
+        Any <input type="checkbox" id="any" name="any" value="yes" />
       </label>
     </div>
   );
