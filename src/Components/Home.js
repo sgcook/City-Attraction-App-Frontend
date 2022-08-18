@@ -8,8 +8,11 @@ import AttractionsForm from "./AttractionsForm";
 const Home = ({ setMarkers }) => {
   const [eatingDrinking, setEatingDrinking] = useState(false);
   const [attractions, setAttractions] = useState(false);
+  const toggleSelection = (e) => {
+    if (e.target.name === "attractions") setAttractions((prev) => !prev);
+    if (e.target.name === "eatingdrinking") setEatingDrinking((prev) => !prev);
+  };
 
-  // if(!eatingDrinking || !attractions) {
   return (
     <div className="home">
       <div className="home-header">
@@ -101,30 +104,32 @@ const Home = ({ setMarkers }) => {
           <p>How much walking do you want to do?</p>
           <label htmlFor="walking">
             <select className="select">
-              <option>minimum</option>
-              <option>moderate</option>
-              <option>plenty</option>
+              <option>Minimum</option>
+              <option>Moderate</option>
+              <option>Plenty</option>
             </select>
           </label>
         </label>
-        <label htmlFor="interest-in">
+        <label htmlFor="interest-in" className="checkbox">
           <p>I'm interested in...</p>
           Eating/Drinking
           <input
             type="checkbox"
             id="eatingdrinking"
+            value={eatingDrinking}
+            checked={eatingDrinking}
             name="eatingdrinking"
-            onChange={() => setEatingDrinking(!eatingDrinking)}
-            value="yes"
+            onChange={toggleSelection}
           />
           <br />
           Attractions
           <input
             type="checkbox"
             id="attractions"
+            value={attractions}
+            checked={attractions}
             name="attractions"
-            onChange={() => setAttractions(!attractions)}
-            value="yes"
+            onChange={toggleSelection}
           />
           <br />
         </label>
