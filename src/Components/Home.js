@@ -1,13 +1,17 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import EatDrinkForm from "./EatDrinkForm";
 import AttractionsForm from "./AttractionsForm";
 
 const Home = () => {
   const [eatingDrinking, setEatingDrinking] = useState(false);
   const [attractions, setAttractions] = useState(false);
+  const toggleSelection = (e) => {
+    if (e.target.name === "attractions") setAttractions((prev) => !prev);
+    if (e.target.name === "eatingdrinking") setEatingDrinking((prev) => !prev);
+  };
 
-  // if(!eatingDrinking || !attractions) {
   return (
     <div className="home">
       <div className="home-header">
@@ -99,36 +103,42 @@ const Home = () => {
           <p>How much walking do you want to do?</p>
           <label htmlFor="walking">
             <select className="select">
-              <option>minimum</option>
-              <option>moderate</option>
-              <option>plenty</option>
+              <option>Minimum</option>
+              <option>Moderate</option>
+              <option>Plenty</option>
             </select>
           </label>
         </label>
-        <label htmlFor="interest-in">
+        <label htmlFor="interest-in" className="checkbox">
           <p>I'm interested in...</p>
           Eating/Drinking
           <input
             type="checkbox"
             id="eatingdrinking"
+            value={eatingDrinking}
+            checked={eatingDrinking}
             name="eatingdrinking"
-            onChange={() => setEatingDrinking(!eatingDrinking)}
-            value="yes"
+            onChange={toggleSelection}
           />
           <br />
           Attractions
           <input
             type="checkbox"
             id="attractions"
+            value={attractions}
+            checked={attractions}
             name="attractions"
-            onChange={() => setAttractions(!attractions)}
-            value="yes"
+            onChange={toggleSelection}
           />
           <br />
         </label>
         {eatingDrinking && <EatDrinkForm />}
         {attractions && <AttractionsForm />}
-        <button type="submit">Plan my day!</button>
+        <Link to="/itinerary">
+          <button type="submit" to="/itinerary">
+            Plan my trip!
+          </button>
+        </Link>
       </form>
     </div>
   );

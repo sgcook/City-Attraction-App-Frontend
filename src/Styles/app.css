@@ -48,3 +48,18 @@ button {
 .navbar-links {
     padding: 0;
 }
+
+.home-form {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.checkbox {
+    line-height: 28px;
+}
+
+.logo {
+    height: 400px;
+    border: 0;
+}
