@@ -27,20 +27,6 @@ const CuisineForm = () => {
             <input type="checkbox" id="any" name="any" value="yes"></input>
             </label>
         </div>
-        //     <div>
-        //     <p>Great! What kind of food do you like?</p>
-        //     <fieldset>
-        //     <label htmlFor="asian">Asian</label><input type="radio" name="action" id="asian" value="asian" /><br />
-        //     <label htmlFor="british/american">British/American</label><input type="radio" name="action" id="british/american" value="british/american" /><br />
-        //     <label htmlFor="caribbean">Caribbean</label><input type="radio" name="action" id="caribbean" value="caribbean" />
-        //     <br></br>
-        //     <label htmlFor="european">European</label><input type="radio" name="action" id="european" value="european" /><br />
-        //     <label htmlFor="indian">Indian</label><input type="radio" name="action" id="indian" value="indian" />
-        //     <label htmlFor="middleEasten">Middle Easten</label><input type="radio" name="action" id="MiddleEasten" value="MiddleEasten" /><br />
-        //     <label htmlFor="vegearian/vegan">Vegearian/Vegan</label><input type="radio" name="action" id="vegearian/vegan" value="vegearian/vegan" /><br />
-        //     <label htmlFor="other">Other</label><input type="radio" name="action" id="other" value="other" />
-        //     </fieldset>
-        // </div>
 )};
   
   export default CuisineForm;

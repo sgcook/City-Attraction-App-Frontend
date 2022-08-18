@@ -2,31 +2,35 @@
 import React, { useState } from "react";
 import EatDrinkForm from "./EatDrinkForm";
 import AttractionsForm from "./AttractionsForm";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [eatingDrinking, setEatingDrinking] = useState(false);
   const [attractions, setAttractions] = useState(false);
+  const toggleSelection = (e) => {
+    if (e.target.name === "attractions") setAttractions(prev => !prev)
+    if (e.target.name === "eatingdrinking") setEatingDrinking(prev => !prev)
+  }
   
-  // if(!eatingDrinking || !attractions) {
     return (
       <div className="home">
         <div className="home-header">
           <h1>CityWalk</h1>
-        </div>
-          <p>We'll plan your walking tour of the city. Where are you going?</p>
-            <form className="home-form">
-            <label htmlFor="home-city">
-          <p>I'm going to...</p>
-            <select className="select" defaultValue={"DEFAULT"}>
-              <option value="DEFAULT" disabled>Choose a city</option>
-              <option>Birmingham</option>
-              <option>Glasgow</option>
-              <option>Liverpool</option>
-              <option>London</option>
-              <option>Manchester</option>
-            </select>
-            </label>
-              <p>On...</p>
+          </div>
+            <p>We'll plan your walking tour of the city. Where are you going?</p>
+              <form className="home-form">
+              <label htmlFor="home-city">
+            <p>I'm going to...</p>
+              <select className="select" defaultValue={"DEFAULT"}>
+                <option value="DEFAULT" disabled>Choose a city</option>
+                <option>Birmingham</option>
+                <option>Glasgow</option>
+                <option>Liverpool</option>
+                <option>London</option>
+                <option>Manchester</option>
+              </select>
+              </label>
+            <p>on...</p>
               <label htmlFor="startdate">
                 <input
                   className="input"
@@ -35,7 +39,7 @@ const Home = () => {
                   placeholder="DD/MM/YYYY"
                 />
               </label>
-              <p>between...</p>
+            <p>between...</p>
              <label htmlFor="start-time">
               <select className="select">
               <option>00:00</option>
@@ -97,24 +101,26 @@ const Home = () => {
               <p>How much walking do you want to do?</p>
               <label htmlFor="walking">
               <select className="select">
-              <option>minimum</option>
-              <option>moderate</option>
-              <option>plenty</option>
+              <option>Minimum</option>
+              <option>Moderate</option>
+              <option>Plenty</option>
               </select>
               </label>
              </label>
              <label htmlFor="interest-in">
             <p>I'm interested in...</p>
             Eating/Drinking
-           <input type="checkbox" id="eatingdrinking" name="eatingdrinking" onChange={()=> setEatingDrinking(!eatingDrinking)} value="yes"></input>
+            <input type="checkbox" id="eatingdrinking" value={eatingDrinking} checked={eatingDrinking} name="eatingdrinking" onChange={toggleSelection}></input>
             <br></br>
             Attractions
-          <input type="checkbox" id="attractions" name="attractions" onChange={()=> setAttractions(!attractions)} value="yes"></input>
+          <input type="checkbox" id="attractions" value={attractions} checked={attractions} name="attractions" onChange={toggleSelection}></input>
           <br></br>
           </label>
           {eatingDrinking && (<EatDrinkForm />)}
           {attractions && (<AttractionsForm />)}
-          <button type="submit">Plan my day!</button>
+          <Link to="/itinerary">
+          <button type="submit" to="/itinerary">Plan my day!</button>
+          </Link>
         </form>
       </div>
     )};

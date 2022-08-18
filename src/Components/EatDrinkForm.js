@@ -4,12 +4,15 @@ import CuisineForm from "./CuisineForm";
 
 const EatDrinkForm = () => {
     const [cuisine, setCuisine] = useState(false);
+    const toggleSelection = (e) => {
+        if (e.target.name === "eatingdrinking") setCuisine(prev => !prev)
+      }
     return (
         <div>
             <p>I'm looking for...</p>
                 <label htmlFor="eatdrinktype">
                 Restaurants
-                <input type="checkbox" id="restaurants" name="restaurants" onChange={()=> setCuisine (!cuisine)}value="yes"></input>
+                <input type="checkbox" id="eatingdrinking" value={cuisine} checked={cuisine} name="eatingdrinking" onChange={toggleSelection}></input>
                 <br></br>
                 Cafés
                 <input type="checkbox" id="cafes" name="cafes" value="yes"></input>
