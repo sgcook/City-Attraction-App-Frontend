@@ -8,7 +8,8 @@ import About from "./Components/About";
 import Home from "./Components/Home";
 
 const App = () => {
-  const [markers, setMarkers] = useState(true);
+  const [markers, setMarkers] = useState(null);
+
   return (
     <div className="App">
       <header className="App-header">
