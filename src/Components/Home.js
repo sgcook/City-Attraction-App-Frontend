@@ -8,6 +8,7 @@ import AttractionsForm from "./AttractionsForm";
 const Home = ({ setMarkers }) => {
   const [eatingDrinking, setEatingDrinking] = useState(false);
   const [attractions, setAttractions] = useState(false);
+  // const [body, setBody] = useState({});
   const toggleSelection = (e) => {
     if (e.target.name === "attractions") setAttractions((prev) => !prev);
     if (e.target.name === "eatingdrinking") setEatingDrinking((prev) => !prev);
@@ -22,7 +23,11 @@ const Home = ({ setMarkers }) => {
       <form className="home-form">
         <label htmlFor="home-city">
           <p>I'm going to...</p>
-          <select className="select" defaultValue="DEFAULT">
+          <select
+            className="select"
+            defaultValue="DEFAULT"
+            // onChange={() => setBody({...body, city: value})}
+          >
             <option value="DEFAULT" disabled>
               Choose a city
             </option>

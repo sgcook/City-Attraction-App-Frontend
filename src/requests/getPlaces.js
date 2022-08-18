@@ -10,9 +10,11 @@ const getPlaces = (city, restaurantType, cuisine, mobility, attractionType) => {
     data,
     params: {
       city,
-      restaurantType,
-      cuisine,
       mobility,
+      eatingDrinking: {
+        restaurantType,
+        cuisine,
+      },
       attractionType,
     },
   };
