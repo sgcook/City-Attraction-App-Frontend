@@ -19,7 +19,7 @@ const App = () => {
         <Navbar markers={markers} />
       </header>
       <Routes>
-        <Route exact path="/" element={<Home setMarkers={setMarkers}/>} />
+        <Route exact path="/" element={<Home setMarkers={setMarkers} />} />
         <Route exact path="/itinerary" element={<Itinerary />} />
         <Route exact path="/about" element={<About />} />
       </Routes>
