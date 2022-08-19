@@ -1,16 +1,50 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState } from "react";
+import qs from "qs";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import axios from "axios";
 import EatDrinkForm from "./EatDrinkForm";
 import AttractionsForm from "./AttractionsForm";
 
 const Home = ({ setMarkers }) => {
   const [eatingDrinking, setEatingDrinking] = useState(false);
   const [attractions, setAttractions] = useState(false);
+  const [query, setQuery] = useState({});
   const toggleSelection = (e) => {
     if (e.target.name === "attractions") setAttractions((prev) => !prev);
     if (e.target.name === "eatingdrinking") setEatingDrinking((prev) => !prev);
+  };
+
+  const getPlaces = () => {
+    // const baseUrl = dev ? "localhost:3000" : "actualURL";
+    const data = "";
+    const config = {
+      method: "get",
+      url: `http://localhost:3001/pathway`,
+      headers: {},
+      data,
+      params: {
+        city: query.city,
+        mobility: query.mobility,
+        eatingDrinking: {
+          restaurantType: query.restaurantType,
+          cuisine: query.cuisine,
+        },
+        attractionType: query.attractionType,
+      },
+      paramsSerializer: (params) => {
+        return qs.stringify(params);
+      },
+    };
+
+    return axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   return (
@@ -22,15 +56,19 @@ const Home = ({ setMarkers }) => {
       <form className="home-form">
         <label htmlFor="home-city">
           <p>I'm going to...</p>
-          <select className="select" defaultValue="DEFAULT">
+          <select
+            className="select"
+            defaultValue="DEFAULT"
+            onChange={(e) => setQuery({ ...query, city: e.target.value })}
+          >
             <option value="DEFAULT" disabled>
               Choose a city
             </option>
-            <option>Birmingham</option>
-            <option>Glasgow</option>
-            <option>Liverpool</option>
-            <option>London</option>
-            <option>Manchester</option>
+            <option value="birmingham">Birmingham</option>
+            <option value="glasgow">Glasgow</option>
+            <option value="liverpool">Liverpool</option>
+            <option value="london">London</option>
+            <option value="manchester">Manchester</option>
           </select>
         </label>
         <p>On...</p>
@@ -45,11 +83,11 @@ const Home = ({ setMarkers }) => {
         <p>between...</p>
         <label htmlFor="start-time">
           <select className="select">
-            <option>00:00</option>
-            <option>01:00</option>
-            <option>02:00</option>
-            <option>03:00</option>
-            <option>04:00</option>
+            <option value="00:00">00:00</option>
+            <option value="01:00">01:00</option>
+            <option value="02:00">02:00</option>
+            <option value="03:00">03:00</option>
+            <option value="04:00">04:00</option>
             <option>05:00</option>
             <option>06:00</option>
             <option>07:00</option>
@@ -115,10 +153,17 @@ const Home = ({ setMarkers }) => {
           </Link>
           <p>How much walking do you want to do?</p>
           <label htmlFor="walking">
-            <select className="select">
-              <option>Minimum</option>
-              <option>Moderate</option>
-              <option>Plenty</option>
+            <select
+              className="select"
+              defaultValue="DEFAULT"
+              onChange={(e) => setQuery({ ...query, mobility: e.target.value })}
+            >
+              <option value="DEFAULT" disabled>
+                Walking Length
+              </option>
+              <option value="minimum">Minimum</option>
+              <option value="moderate">Moderate</option>
+              <option value="plenty">Plenty</option>
             </select>
           </label>
         </label>
@@ -145,14 +190,16 @@ const Home = ({ setMarkers }) => {
           />
           <br />
         </label>
-        {eatingDrinking && <EatDrinkForm />}
-        {attractions && <AttractionsForm />}
+        {eatingDrinking && <EatDrinkForm query={query} setQuery={setQuery} />}
+        {attractions && <AttractionsForm query={query} setQuery={setQuery} />}
         <Link className="navbar-item" to="/itinerary">
           <button
             type="submit"
             onClick={() => {
               /* Will have to change to be response from backend */
+              console.log(query);
               setMarkers(true);
+              getPlaces();
             }}
           >
             Plan my day!

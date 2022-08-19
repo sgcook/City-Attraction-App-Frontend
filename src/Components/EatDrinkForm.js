@@ -1,11 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import CuisineForm from "./CuisineForm";
 
-const EatDrinkForm = () => {
+const EatDrinkForm = ({ query, setQuery }) => {
   const [cuisine, setCuisine] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
-  const handleOnClick = () => {
+  const handleOnChange = () => {
     if (document.getElementById("any").checked === true) {
       document.getElementById("cafes").checked = false;
       document.getElementById("pubs/bars").checked = false;
@@ -13,6 +14,12 @@ const EatDrinkForm = () => {
     }
     setIsChecked(!isChecked);
   };
+  useEffect(() => {
+    setQuery({ ...query, restaurantType: [] });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div>
       <p>I'm looking for...</p>
@@ -23,28 +30,71 @@ const EatDrinkForm = () => {
           id="restaurants"
           name="restaurants"
           onChange={() => setCuisine(!cuisine)}
-          value="yes"
+          value="restaurants"
+          onClick={(e) => {
+            setQuery({
+              ...query,
+              restaurantType: [...query.restaurantType, e.target.value],
+            });
+          }}
         />
         <br />
         Cafés
-        <input type="checkbox" id="cafes" name="cafes" value="yes" />
+        <input
+          type="checkbox"
+          id="cafes"
+          name="cafes"
+          value="cafes"
+          onClick={(e) => {
+            setQuery({
+              ...query,
+              restaurantType: [...query.restaurantType, e.target.value],
+            });
+          }}
+        />
         <br />
         Pubs/Bars
-        <input type="checkbox" id="pubs/bars" name="pubs/bars" value="yes" />
+        <input
+          type="checkbox"
+          id="pubs/bars"
+          name="pubs/bars"
+          value="pubsBars"
+          onClick={(e) => {
+            setQuery({
+              ...query,
+              restaurantType: [...query.restaurantType, e.target.value],
+            });
+          }}
+        />
         <br />
         Any
         <input
           type="checkbox"
           id="any"
           name="any"
-          value="yes"
+          value="anyRestaurant"
           checked={isChecked}
-          onClick={handleOnClick}
+          onChange={handleOnChange}
+          onClick={(e) => {
+            setQuery({
+              ...query,
+              restaurantType: [...query.restaurantType, e.target.value],
+            });
+          }}
         />
       </label>
-      {cuisine && <CuisineForm />}
+      {cuisine && <CuisineForm query={query} setQuery={setQuery} />}
     </div>
   );
+};
+
+EatDrinkForm.propTypes = {
+  query: PropTypes.shape({
+    city: PropTypes.string.isRequired,
+    mobility: PropTypes.string.isRequired,
+    restaurantType: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  }).isRequired,
+  setQuery: PropTypes.func.isRequired,
 };
 
 export default EatDrinkForm;
