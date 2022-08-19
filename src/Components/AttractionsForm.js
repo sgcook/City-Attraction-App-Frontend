@@ -1,8 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 
 const AttractionsForm = ({ query, setQuery }) => {
+  useEffect(() => {
+    setQuery({ ...query, attractionType: [] });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div>
       <p>I'd like to visit...</p>
@@ -16,10 +22,7 @@ const AttractionsForm = ({ query, setQuery }) => {
           onClick={(e) => {
             setQuery({
               ...query,
-              attractionType: {
-                ...query.attractionType,
-                museumsGalleries: e.target.value,
-              },
+              attractionType: [...query.attractionType, e.target.value],
             });
           }}
         />
@@ -33,10 +36,7 @@ const AttractionsForm = ({ query, setQuery }) => {
           onClick={(e) => {
             setQuery({
               ...query,
-              attractionType: {
-                ...query.attractionType,
-                parksGardens: e.target.value,
-              },
+              attractionType: [...query.attractionType, e.target.value],
             });
           }}
         />
@@ -50,10 +50,7 @@ const AttractionsForm = ({ query, setQuery }) => {
           onClick={(e) => {
             setQuery({
               ...query,
-              attractionType: {
-                ...query.attractionType,
-                landmarksMonuments: e.target.value,
-              },
+              attractionType: [...query.attractionType, e.target.value],
             });
           }}
         />
@@ -67,10 +64,7 @@ const AttractionsForm = ({ query, setQuery }) => {
           onClick={(e) => {
             setQuery({
               ...query,
-              attractionType: {
-                ...query.attractionType,
-                anyAttractions: e.target.value,
-              },
+              attractionType: [...query.attractionType, e.target.value],
             });
           }}
         />
@@ -83,8 +77,8 @@ AttractionsForm.propTypes = {
   query: PropTypes.shape({
     city: PropTypes.string.isRequired,
     mobility: PropTypes.string.isRequired,
-    restaurantType: PropTypes.string.isRequired,
-    attractionType: PropTypes.string.isRequired,
+    restaurantType: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    attractionType: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   }).isRequired,
   setQuery: PropTypes.func.isRequired,
 };

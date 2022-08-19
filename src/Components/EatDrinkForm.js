@@ -1,10 +1,16 @@
 /* eslint-disable react/no-unescaped-entities */
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import CuisineForm from "./CuisineForm";
 
 const EatDrinkForm = ({ query, setQuery }) => {
   const [cuisine, setCuisine] = useState(false);
+  useEffect(() => {
+    setQuery({ ...query, restaurantType: [] });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div>
       <p>I'm looking for...</p>
@@ -15,7 +21,13 @@ const EatDrinkForm = ({ query, setQuery }) => {
           id="restaurants"
           name="restaurants"
           onChange={() => setCuisine(!cuisine)}
-          value="restaurantType"
+          value="restaurants"
+          onClick={(e) => {
+            setQuery({
+              ...query,
+              restaurantType: [...query.restaurantType, e.target.value],
+            });
+          }}
         />
         <br />
         Cafés
@@ -27,10 +39,7 @@ const EatDrinkForm = ({ query, setQuery }) => {
           onClick={(e) => {
             setQuery({
               ...query,
-              restaurantType: {
-                ...query.restaurantType,
-                cafes: e.target.value,
-              },
+              restaurantType: [...query.restaurantType, e.target.value],
             });
           }}
         />
@@ -44,10 +53,7 @@ const EatDrinkForm = ({ query, setQuery }) => {
           onClick={(e) => {
             setQuery({
               ...query,
-              restaurantType: {
-                ...query.restaurantType,
-                pubsBars: e.target.value,
-              },
+              restaurantType: [...query.restaurantType, e.target.value],
             });
           }}
         />
@@ -61,10 +67,7 @@ const EatDrinkForm = ({ query, setQuery }) => {
           onClick={(e) => {
             setQuery({
               ...query,
-              restaurantType: {
-                ...query.restaurantType,
-                any: e.target.value,
-              },
+              restaurantType: [...query.restaurantType, e.target.value],
             });
           }}
         />
@@ -78,7 +81,7 @@ EatDrinkForm.propTypes = {
   query: PropTypes.shape({
     city: PropTypes.string.isRequired,
     mobility: PropTypes.string.isRequired,
-    restaurantType: PropTypes.string.isRequired,
+    restaurantType: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   }).isRequired,
   setQuery: PropTypes.func.isRequired,
 };

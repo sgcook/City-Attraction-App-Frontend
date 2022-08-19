@@ -24,16 +24,7 @@ const Navbar = ({ markers }) => {
 };
 
 Navbar.propTypes = {
-  markers: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      city: PropTypes.string.isRequired,
-      restaurantType: PropTypes.string,
-      cuisine: PropTypes.string,
-      mobility: PropTypes.string,
-      attractionType: PropTypes.string,
-    })
-  ).isRequired,
+  markers: PropTypes.bool.isRequired,
 };
 
 export default Navbar;

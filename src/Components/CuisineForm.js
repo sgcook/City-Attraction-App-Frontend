@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 
 const CuisineForm = ({ query, setQuery }) => {
+  useEffect(() => {
+    setQuery({ ...query, cuisine: [] });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div>
       <p>Great! What kind of food do you like?</p>
@@ -15,13 +21,7 @@ const CuisineForm = ({ query, setQuery }) => {
           onClick={(e) => {
             setQuery({
               ...query,
-              restaurantType: {
-                ...query.restaurantType,
-                cuisine: {
-                  ...query.restaurantType.cuisine,
-                  asian: e.target.value,
-                },
-              },
+              cuisine: [...query.cuisine, e.target.value],
             });
           }}
         />
@@ -34,13 +34,7 @@ const CuisineForm = ({ query, setQuery }) => {
           onClick={(e) => {
             setQuery({
               ...query,
-              restaurantType: {
-                ...query.restaurantType,
-                cuisine: {
-                  ...query.restaurantType.cuisine,
-                  britishAmerican: e.target.value,
-                },
-              },
+              cuisine: [...query.cuisine, e.target.value],
             });
           }}
         />
@@ -53,13 +47,7 @@ const CuisineForm = ({ query, setQuery }) => {
           onClick={(e) => {
             setQuery({
               ...query,
-              restaurantType: {
-                ...query.restaurantType,
-                cuisine: {
-                  ...query.restaurantType.cuisine,
-                  indian: e.target.value,
-                },
-              },
+              cuisine: [...query.cuisine, e.target.value],
             });
           }}
         />
@@ -73,13 +61,7 @@ const CuisineForm = ({ query, setQuery }) => {
           onClick={(e) => {
             setQuery({
               ...query,
-              restaurantType: {
-                ...query.restaurantType,
-                cuisine: {
-                  ...query.restaurantType.cuisine,
-                  european: e.target.value,
-                },
-              },
+              cuisine: [...query.cuisine, e.target.value],
             });
           }}
         />
@@ -92,13 +74,7 @@ const CuisineForm = ({ query, setQuery }) => {
           onClick={(e) => {
             setQuery({
               ...query,
-              restaurantType: {
-                ...query.restaurantType,
-                cuisine: {
-                  ...query.restaurantType.cuisine,
-                  vegetarianVegan: e.target.value,
-                },
-              },
+              cuisine: [...query.cuisine, e.target.value],
             });
           }}
         />
@@ -112,13 +88,7 @@ const CuisineForm = ({ query, setQuery }) => {
           onClick={(e) => {
             setQuery({
               ...query,
-              restaurantType: {
-                ...query.restaurantType,
-                cuisine: {
-                  ...query.restaurantType.cuisine,
-                  middleEastern: e.target.value,
-                },
-              },
+              cuisine: [...query.cuisine, e.target.value],
             });
           }}
         />
@@ -131,13 +101,7 @@ const CuisineForm = ({ query, setQuery }) => {
           onClick={(e) => {
             setQuery({
               ...query,
-              restaurantType: {
-                ...query.restaurantType,
-                cuisine: {
-                  ...query.restaurantType.cuisine,
-                  Caribbean: e.target.value,
-                },
-              },
+              cuisine: [...query.cuisine, e.target.value],
             });
           }}
         />
@@ -150,13 +114,7 @@ const CuisineForm = ({ query, setQuery }) => {
           onClick={(e) => {
             setQuery({
               ...query,
-              restaurantType: {
-                ...query.restaurantType,
-                cuisine: {
-                  ...query.restaurantType.cuisine,
-                  Other: e.target.value,
-                },
-              },
+              cuisine: [...query.cuisine, e.target.value],
             });
           }}
         />
@@ -169,13 +127,7 @@ const CuisineForm = ({ query, setQuery }) => {
           onClick={(e) => {
             setQuery({
               ...query,
-              restaurantType: {
-                ...query.restaurantType,
-                cuisine: {
-                  ...query.restaurantType.cuisine,
-                  Any: e.target.value,
-                },
-              },
+              cuisine: [...query.cuisine, e.target.value],
             });
           }}
         />
@@ -188,7 +140,7 @@ CuisineForm.propTypes = {
   query: PropTypes.shape({
     city: PropTypes.string.isRequired,
     mobility: PropTypes.string.isRequired,
-    restaurantType: PropTypes.string.isRequired,
+    cuisine: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   }).isRequired,
   setQuery: PropTypes.func.isRequired,
 };
