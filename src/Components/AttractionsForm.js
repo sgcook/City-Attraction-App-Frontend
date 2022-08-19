@@ -1,7 +1,16 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from "react";
+import { React, useState } from "react";
 
 const AttractionsForm = () => {
+  const [isChecked, setIsChecked] = useState(false);
+  const handleOnClick = () => {
+    if (document.getElementById("any").checked === true) {
+      document.getElementById("museums/galleries").checked = false;
+      document.getElementById("parks/gardens").checked = false;
+      document.getElementById("landmarks/monuments").checked = false;
+    }
+    setIsChecked(!isChecked);
+  };
   return (
     <div>
       <p>I'd like to visit...</p>
@@ -9,8 +18,8 @@ const AttractionsForm = () => {
         Museums/Galleries
         <input
           type="checkbox"
-          id="museumsgalleries"
-          name="museumsgalleries"
+          id="museums/galleries"
+          name="museums/galleries"
           value="yes"
         />
         <br />
@@ -23,9 +32,22 @@ const AttractionsForm = () => {
         />
         <br />
         Landmarks/Monuments
-        <input type="checkbox" id="indian" name="pubs/bars" value="yes" />
+        <input
+          type="checkbox"
+          id="landmarks/monuments"
+          name="landmarks/monuments"
+          value="yes"
+        />
         <br />
-        Any <input type="checkbox" id="any" name="any" value="yes" />
+        Any
+        <input
+          type="checkbox"
+          id="any"
+          name="any"
+          checked={isChecked}
+          onClick={handleOnClick}
+          value="yes"
+        />
       </label>
     </div>
   );

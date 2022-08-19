@@ -101,6 +101,18 @@ const Home = ({ setMarkers }) => {
             <option>23:00</option>
             <option>24:00</option>
           </select>
+          <br />
+          <Link className="navbar-item" to="/itinerary">
+            <button
+              type="submit"
+              onClick={() => {
+                /* Will have to change to be response from backend */
+                setMarkers(true);
+              }}
+            >
+              Wildcard Tour
+            </button>
+          </Link>
           <p>How much walking do you want to do?</p>
           <label htmlFor="walking">
             <select className="select">

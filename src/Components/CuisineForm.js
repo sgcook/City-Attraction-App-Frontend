@@ -1,6 +1,20 @@
-import React from "react";
+import { React, useState } from "react";
 
 const CuisineForm = () => {
+  const [isChecked, setIsChecked] = useState(false);
+  const handleOnClick = () => {
+    if (document.getElementById("any").checked === true) {
+      document.getElementById("asian").checked = false;
+      document.getElementById("british/american").checked = false;
+      document.getElementById("indian").checked = false;
+      document.getElementById("european").checked = false;
+      document.getElementById("vegetarian/vegan").checked = false;
+      document.getElementById("middleeastern").checked = false;
+      document.getElementById("caribbean").checked = false;
+      document.getElementById("other").checked = false;
+    }
+    setIsChecked(!isChecked);
+  };
   return (
     <div>
       <p>Great! What kind of food do you like?</p>
@@ -34,7 +48,14 @@ const CuisineForm = () => {
         Other
         <input type="checkbox" id="other" name="pubs/bars" value="yes" />
         Any
-        <input type="checkbox" id="any" name="any" value="yes" />
+        <input
+          type="checkbox"
+          id="any"
+          name="any"
+          checked={isChecked}
+          onClick={handleOnClick}
+          value="yes"
+        />
       </label>
     </div>
   );
