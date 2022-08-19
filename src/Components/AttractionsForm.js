@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 const AttractionsForm = ({ query, setQuery }) => {
@@ -9,6 +9,16 @@ const AttractionsForm = ({ query, setQuery }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const [isChecked, setIsChecked] = useState(false);
+  const handleOnChange = () => {
+    if (document.getElementById("any").checked === true) {
+      document.getElementById("museums/galleries").checked = false;
+      document.getElementById("parks/gardens").checked = false;
+      document.getElementById("landmarks/monuments").checked = false;
+    }
+    setIsChecked(!isChecked);
+  };
+
   return (
     <div>
       <p>I'd like to visit...</p>
@@ -16,9 +26,9 @@ const AttractionsForm = ({ query, setQuery }) => {
         Museums/Galleries
         <input
           type="checkbox"
-          id="museumsgalleries"
-          name="museumsgalleries"
-          value="museumsGalleries"
+          id="museums/galleries"
+          name="museums/galleries"
+          value="museums/galleries"
           onClick={(e) => {
             setQuery({
               ...query,
@@ -44,9 +54,9 @@ const AttractionsForm = ({ query, setQuery }) => {
         Landmarks/Monuments
         <input
           type="checkbox"
-          id="indian"
-          name="pubs/bars"
-          value="landmarksMonuments"
+          id="landmarks/monuments"
+          name="landmarks/monuments"
+          value="landmarks/monuments"
           onClick={(e) => {
             setQuery({
               ...query,
@@ -60,6 +70,8 @@ const AttractionsForm = ({ query, setQuery }) => {
           type="checkbox"
           id="any"
           name="any"
+          checked={isChecked}
+          onChange={handleOnChange}
           value="anyAttraction"
           onClick={(e) => {
             setQuery({

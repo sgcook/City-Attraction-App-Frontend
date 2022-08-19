@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 const CuisineForm = ({ query, setQuery }) => {
@@ -7,6 +7,20 @@ const CuisineForm = ({ query, setQuery }) => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  const [isChecked, setIsChecked] = useState(false);
+  const handleOnChange = () => {
+    if (document.getElementById("any").checked === true) {
+      document.getElementById("asian").checked = false;
+      document.getElementById("british/american").checked = false;
+      document.getElementById("indian").checked = false;
+      document.getElementById("european").checked = false;
+      document.getElementById("vegetarian/vegan").checked = false;
+      document.getElementById("middleeastern").checked = false;
+      document.getElementById("caribbean").checked = false;
+      document.getElementById("other").checked = false;
+    }
+    setIsChecked(!isChecked);
+  };
 
   return (
     <div>
@@ -124,6 +138,8 @@ const CuisineForm = ({ query, setQuery }) => {
           id="any"
           name="any"
           value="anyCuisine"
+          checked={isChecked}
+          onChange={handleOnChange}
           onClick={(e) => {
             setQuery({
               ...query,
