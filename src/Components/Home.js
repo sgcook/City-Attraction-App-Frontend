@@ -21,7 +21,7 @@ const Home = ({ setMarkers }) => {
     const data = "";
     const config = {
       method: "get",
-      url: `http://localhost:3000/pathway`,
+      url: `http://localhost:3001/pathway`,
       headers: {},
       data,
       params: {
