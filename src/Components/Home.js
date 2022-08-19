@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState } from "react";
+import qs from "qs";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import axios from "axios";
@@ -15,7 +16,7 @@ const Home = ({ setMarkers }) => {
     if (e.target.name === "eatingdrinking") setEatingDrinking((prev) => !prev);
   };
 
-  const getPlaces = (query) => {
+  const getPlaces = () => {
     // const baseUrl = dev ? "localhost:3000" : "actualURL";
     const data = "";
     const config = {
@@ -23,7 +24,18 @@ const Home = ({ setMarkers }) => {
       url: `http://localhost:3000/pathway`,
       headers: {},
       data,
-      params: { query },
+      params: {
+        city: query.city,
+        mobility: query.mobility,
+        eatingDrinking: {
+          restaurantType: query.restaurantType,
+          cuisine: query.cuisine,
+        },
+        attractionType: query.attractionType,
+      },
+      paramsSerializer: (params) => {
+        return qs.stringify(params);
+      },
     };
 
     return axios(config)
@@ -131,8 +143,12 @@ const Home = ({ setMarkers }) => {
           <label htmlFor="walking">
             <select
               className="select"
+              defaultValue="DEFAULT"
               onChange={(e) => setQuery({ ...query, mobility: e.target.value })}
             >
+              <option value="DEFAULT" disabled>
+                Walking Length
+              </option>
               <option value="minimum">Minimum</option>
               <option value="moderate">Moderate</option>
               <option value="plenty">Plenty</option>
@@ -164,14 +180,14 @@ const Home = ({ setMarkers }) => {
         </label>
         {eatingDrinking && <EatDrinkForm query={query} setQuery={setQuery} />}
         {attractions && <AttractionsForm query={query} setQuery={setQuery} />}
-        {console.log(query)}
         <Link className="navbar-item" to="/itinerary">
           <button
             type="submit"
             onClick={() => {
               /* Will have to change to be response from backend */
+              console.log(query);
               setMarkers(true);
-              getPlaces(query);
+              getPlaces();
             }}
           >
             Plan my day!
