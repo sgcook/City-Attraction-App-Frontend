@@ -27,19 +27,13 @@ const Home = ({ setMarkers }) => {
       params: {
         city: query.city,
         mobility: query.mobility,
-        restaurantType: query.restaurantType
-          .map((n, index) => `restaurantType[${index}]=${n}`)
-          .join("&"),
-        cuisine: query.cuisine
-          .map((n, index) => `cuisine[${index}]=${n}`)
-          .join("&"),
-        attractionType: query.attractionType
-          .map((n, index) => `attractionType[${index}]=${n}`)
-          .join("&"),
+        restaurantType: query.restaurantType,
+        cuisine: query.cuisine,
+        attractionType: query.attractionType,
       },
-      // paramsSerializer: (params) => {
-      //   return qs.stringify(params);
-      // },
+      paramsSerializer: (params) => {
+        return qs.stringify(params, { encode: false });
+      },
     };
 
     return axios(config)
