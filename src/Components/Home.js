@@ -28,13 +28,13 @@ const Home = ({ setMarkers }) => {
         city: query.city,
         mobility: query.mobility,
         restaurantType: query.restaurantType
-          .map((n, index) => `restaurants[${index}]=${n}`)
+          .map((n, index) => `restaurantType[${index}]=${n}`)
           .join("&"),
         cuisine: query.cuisine
-          .map((n, index) => `restaurants[${index}]=${n}`)
+          .map((n, index) => `cuisine[${index}]=${n}`)
           .join("&"),
         attractionType: query.attractionType
-          .map((n, index) => `restaurants[${index}]=${n}`)
+          .map((n, index) => `attractionType[${index}]=${n}`)
           .join("&"),
       },
       // paramsSerializer: (params) => {
