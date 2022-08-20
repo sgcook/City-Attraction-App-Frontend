@@ -27,19 +27,13 @@ const Home = ({ setMarkers }) => {
       params: {
         city: query.city,
         mobility: query.mobility,
-        restaurantType: query.restaurantType
-          .map((n, index) => `restaurantType[${index}]=${n}`)
-          .join("&"),
-        cuisine: query.cuisine
-          .map((n, index) => `cuisine[${index}]=${n}`)
-          .join("&"),
-        attractionType: query.attractionType
-          .map((n, index) => `attractionType[${index}]=${n}`)
-          .join("&"),
+        restaurantType: query.restaurantType,
+        cuisine: query.cuisine,
+        attractionType: query.attractionType,
       },
-      // paramsSerializer: (params) => {
-      //   return qs.stringify(params);
-      // },
+      paramsSerializer: (params) => {
+        return qs.stringify(params, { encode: false });
+      },
     };
 
     return axios(config)
@@ -75,89 +69,20 @@ const Home = ({ setMarkers }) => {
             <option value="manchester">Manchester</option>
           </select>
         </label>
-        <p>On...</p>
-        <label htmlFor="startdate">
-          <input
-            className="input"
-            id="startdate"
-            name="startdate"
-            placeholder="DD/MM/YYYY"
-          />
-        </label>
-        <p>between...</p>
-        <label htmlFor="start-time">
-          <select className="select">
-            <option value="00:00">00:00</option>
-            <option value="01:00">01:00</option>
-            <option value="02:00">02:00</option>
-            <option value="03:00">03:00</option>
-            <option value="04:00">04:00</option>
-            <option>05:00</option>
-            <option>06:00</option>
-            <option>07:00</option>
-            <option>08:00</option>
-            <option>09:00</option>
-            <option>10:00</option>
-            <option>11:00</option>
-            <option>12:00</option>
-            <option>13:00</option>
-            <option>14:00</option>
-            <option>15:00</option>
-            <option>16:00</option>
-            <option>17:00</option>
-            <option>18:00</option>
-            <option>19:00</option>
-            <option>20:00</option>
-            <option>21:00</option>
-            <option>22:00</option>
-            <option>23:00</option>
-            <option>24:00</option>
+        <p>How much walking do you want to do?</p>
+        <label htmlFor="walking">
+          <select
+            className="select"
+            defaultValue="DEFAULT"
+            onChange={(e) => setQuery({ ...query, mobility: e.target.value })}
+          >
+            <option value="DEFAULT" disabled>
+              Walking Length
+            </option>
+            <option value="minimum">Minimum</option>
+            <option value="moderate">Moderate</option>
+            <option value="plenty">Plenty</option>
           </select>
-        </label>
-        <label htmlFor="end-time">
-          and
-          <select className="select">
-            <option>00:00</option>
-            <option>01:00</option>
-            <option>02:00</option>
-            <option>03:00</option>
-            <option>04:00</option>
-            <option>05:00</option>
-            <option>06:00</option>
-            <option>07:00</option>
-            <option>08:00</option>
-            <option>09:00</option>
-            <option>10:00</option>
-            <option>11:00</option>
-            <option>12:00</option>
-            <option>13:00</option>
-            <option>14:00</option>
-            <option>15:00</option>
-            <option>16:00</option>
-            <option>17:00</option>
-            <option>18:00</option>
-            <option>19:00</option>
-            <option>20:00</option>
-            <option>21:00</option>
-            <option>22:00</option>
-            <option>23:00</option>
-            <option>24:00</option>
-          </select>
-          <p>How much walking do you want to do?</p>
-          <label htmlFor="walking">
-            <select
-              className="select"
-              defaultValue="DEFAULT"
-              onChange={(e) => setQuery({ ...query, mobility: e.target.value })}
-            >
-              <option value="DEFAULT" disabled>
-                Walking Length
-              </option>
-              <option value="minimum">Minimum</option>
-              <option value="moderate">Moderate</option>
-              <option value="plenty">Plenty</option>
-            </select>
-          </label>
         </label>
         <label htmlFor="interest-in" className="checkbox">
           <p>I'm interested in...</p>
