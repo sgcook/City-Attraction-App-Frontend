@@ -27,10 +27,8 @@ const Home = ({ setMarkers }) => {
       params: {
         city: query.city,
         mobility: query.mobility,
-        eatingDrinking: {
-          restaurantType: query.restaurantType,
-          cuisine: query.cuisine,
-        },
+        restaurantType: query.restaurantType,
+        cuisine: query.cuisine,
         attractionType: query.attractionType,
       },
       paramsSerializer: (params) => {
