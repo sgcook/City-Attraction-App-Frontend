@@ -30,8 +30,12 @@ const Home = ({ setMarkers }) => {
         restaurantType: query.restaurantType
           .map((n, index) => `restaurants[${index}]=${n}`)
           .join("&"),
-        cuisine: query.cuisine,
-        attractionType: query.attractionType,
+        cuisine: query.cuisine
+          .map((n, index) => `restaurants[${index}]=${n}`)
+          .join("&"),
+        attractionType: query.attractionType
+          .map((n, index) => `restaurants[${index}]=${n}`)
+          .join("&"),
       },
       // paramsSerializer: (params) => {
       //   return qs.stringify(params);
