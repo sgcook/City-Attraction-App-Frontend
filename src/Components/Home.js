@@ -27,7 +27,7 @@ const Home = ({ setMarkers }) => {
       params: {
         city: query.city,
         mobility: query.mobility,
-        restaurantType: query.restaurantType,
+        restaurantType: query.restaurantType.map((n, index) => `restaurants[${index}]=${n}`).join('&')}
         cuisine: query.cuisine,
         attractionType: query.attractionType,
       },
