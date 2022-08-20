@@ -1,20 +1,21 @@
 # City Attraction App FrontEnd
 
-## Motivation
+Have you ever visited a new city and not known what to do?
+This [app] allows you to create a bespoke walking tour of a well-known UK city.
 
-This app was built as part of my coursework at Manchester Codes. I practiced using React, useState, useEffect, and useContext.
+By selecting your preferred city, mobility, eating and drinking, and attractions, the app generates a walking tour with a route, step by step directions that begin and start at the city's major train station.
 
 ## Desktop Version:
 
-![desktop version](./src//desktop.png)
+![desktop version]()
 
 ## Mobile Version:
 
-![mobile version](./src/mobile.png)
+![mobile version]()
 
 ## How to use:
 
-After cloning the app using `$git clone git@github.com:sgcook/tech-test-test.git`\
+After cloning the app using `$`\
 
 Run these commands in the terminal:\
 `$npm install` to install code dependencies\
