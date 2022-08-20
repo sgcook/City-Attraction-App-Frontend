@@ -1,11 +1,24 @@
-body {
+* {
     background-color: gold;
-}
-
-.home {
     text-align: center;
     color: black;
     font-family: 'Source Sans Pro', sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 40px;
+    padding-right: 40px;
+    max-width: 600px;
+}
+
+.pathway {
+    text-align: right;
+    color: black;
+    font-family: 'Source Sans Pro', sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 40px;
+    padding-right: 40px;
+    max-width: 600px;
 }
 
 .navbar {
@@ -55,4 +68,9 @@ button {
 
 .checkbox {
     line-height: 28px;
+    text-align: center;
 }
+
+/* @media screen and (min-device-width: 1200px) {
+
+} */
