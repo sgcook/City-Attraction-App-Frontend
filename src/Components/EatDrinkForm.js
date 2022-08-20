@@ -1,16 +1,33 @@
 /* eslint-disable react/no-unescaped-entities */
-import { React, useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import CuisineForm from "./CuisineForm";
 
 const EatDrinkForm = ({ query, setQuery }) => {
-  const [cuisine, setCuisine] = useState(false);
   useEffect(() => {
     setQuery({ ...query, restaurantType: [] });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+  const initialState = {
+    restaurants: false,
+    cafes: false,
+    pubsBars: false,
+    any: false,
+  };
+  const [fields, setFields] = useState(initialState);
+  const [cuisine, setCuisine] = useState(false);
+  const handleOnChange = (e) => {
+    const { name } = e.target;
+    const { checked } = e.target;
+    if (name === "any") {
+      setFields({ ...initialState, any: true });
+    } else {
+      setFields((previousState) => {
+        return { ...previousState, [name]: checked, any: false };
+      });
+    }
+  };
   return (
     <div>
       <p>I'm looking for...</p>
@@ -20,13 +37,15 @@ const EatDrinkForm = ({ query, setQuery }) => {
           type="checkbox"
           id="restaurants"
           name="restaurants"
-          onChange={() => setCuisine(!cuisine)}
+          checked={fields.restaurants}
           value="restaurants"
-          onClick={(e) => {
+          onChange={(e) => {
             setQuery({
               ...query,
               restaurantType: [...query.restaurantType, e.target.value],
             });
+            handleOnChange(e);
+            setCuisine(!cuisine);
           }}
         />
         <br />
@@ -36,25 +55,29 @@ const EatDrinkForm = ({ query, setQuery }) => {
           id="cafes"
           name="cafes"
           value="cafes"
-          onClick={(e) => {
+          checked={fields.cafes}
+          onChange={(e) => {
             setQuery({
               ...query,
               restaurantType: [...query.restaurantType, e.target.value],
             });
+            handleOnChange(e);
           }}
         />
         <br />
         Pubs/Bars
         <input
           type="checkbox"
-          id="pubs/bars"
-          name="pubs/bars"
+          id="pubsBars"
+          name="pubsBars"
           value="pubsBars"
-          onClick={(e) => {
+          checked={fields.pubsBars}
+          onChange={(e) => {
             setQuery({
               ...query,
               restaurantType: [...query.restaurantType, e.target.value],
             });
+            handleOnChange(e);
           }}
         />
         <br />
@@ -63,12 +86,15 @@ const EatDrinkForm = ({ query, setQuery }) => {
           type="checkbox"
           id="any"
           name="any"
-          value="anyRestaurant"
-          onClick={(e) => {
+          value="any"
+          checked={fields.any}
+          onChange={(e) => {
             setQuery({
               ...query,
               restaurantType: [...query.restaurantType, e.target.value],
             });
+            handleOnChange(e);
+            setCuisine(!cuisine);
           }}
         />
       </label>
