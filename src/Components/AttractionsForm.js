@@ -9,16 +9,24 @@ const AttractionsForm = ({ query, setQuery }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const [isChecked, setIsChecked] = useState(false);
-  const handleOnChange = () => {
-    if (document.getElementById("any").checked === true) {
-      document.getElementById("museums/galleries").checked = false;
-      document.getElementById("parks/gardens").checked = false;
-      document.getElementById("landmarks/monuments").checked = false;
-    }
-    setIsChecked(!isChecked);
+  const initialState = {
+    museumsGalleries: false,
+    parksGardens: false,
+    landmarksMonuments: false,
+    any: false,
   };
-
+  const [fields, setFields] = useState(initialState);
+  const handleOnChange = (e) => {
+    const { name } = e.target;
+    const { checked } = e.target;
+    if (name === "any") {
+      setFields({ ...initialState, any: true });
+    } else {
+      setFields((previousState) => {
+        return { ...previousState, [name]: checked, any: false };
+      });
+    }
+  };
   return (
     <div>
       <p>I'd like to visit...</p>
@@ -26,58 +34,64 @@ const AttractionsForm = ({ query, setQuery }) => {
         Museums/Galleries
         <input
           type="checkbox"
-          id="museums/galleries"
-          name="museums/galleries"
-          value="museums/galleries"
-          onClick={(e) => {
+          id="museumsGalleries"
+          name="museumsGalleries"
+          value="museumsGalleries"
+          checked={fields.museumsGalleries}
+          onChange={(e) => {
             setQuery({
               ...query,
               attractionType: [...query.attractionType, e.target.value],
             });
+            handleOnChange(e);
           }}
         />
         <br />
         Parks/Gardens
         <input
           type="checkbox"
-          id="parks/gardens"
-          name="parks/gardens"
+          id="parksGardens"
+          name="parksGardens"
           value="parksGardens"
-          onClick={(e) => {
+          checked={fields.parksGardens}
+          onChange={(e) => {
             setQuery({
               ...query,
               attractionType: [...query.attractionType, e.target.value],
             });
+            handleOnChange(e);
           }}
         />
         <br />
         Landmarks/Monuments
         <input
           type="checkbox"
-          id="landmarks/monuments"
-          name="landmarks/monuments"
-          value="landmarks/monuments"
-          onClick={(e) => {
+          id="landmarksMonuments"
+          name="landmarksMonuments"
+          value="landmarksMonuments"
+          checked={fields.landmarksMonuments}
+          onChange={(e) => {
             setQuery({
               ...query,
               attractionType: [...query.attractionType, e.target.value],
             });
+            handleOnChange(e);
           }}
         />
         <br />
-        Any{" "}
+        Any
         <input
           type="checkbox"
           id="any"
           name="any"
-          checked={isChecked}
-          onChange={handleOnChange}
-          value="anyAttraction"
-          onClick={(e) => {
+          checked={fields.any}
+          value="any"
+          onChange={(e) => {
             setQuery({
               ...query,
               attractionType: [...query.attractionType, e.target.value],
             });
+            handleOnChange(e);
           }}
         />
       </label>
