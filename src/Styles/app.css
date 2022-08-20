@@ -1,3 +1,7 @@
+* {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
 body {
     background-color: gold;
 }
@@ -5,12 +9,10 @@ body {
 .home {
     text-align: center;
     color: black;
-    font-family: 'Source Sans Pro', sans-serif;
 }
 
 .navbar {
     text-align: center;
-    font-family: 'Source Sans Pro', sans-serif;
     padding: 0;
 }
 
@@ -39,7 +41,6 @@ button {
     display: inline-block;
     color: black;
     font-size: 20px;
-    font-family: 'Source Sans Pro', sans-serif;
     text-decoration: none;
 }
     
