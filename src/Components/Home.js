@@ -27,13 +27,15 @@ const Home = ({ setMarkers }) => {
       params: {
         city: query.city,
         mobility: query.mobility,
-        restaurantType: query.restaurantType.map((n, index) => `restaurants[${index}]=${n}`).join('&')}
+        restaurantType: query.restaurantType
+          .map((n, index) => `restaurants[${index}]=${n}`)
+          .join("&"),
         cuisine: query.cuisine,
         attractionType: query.attractionType,
       },
-      paramsSerializer: (params) => {
-        return qs.stringify(params);
-      },
+      // paramsSerializer: (params) => {
+      //   return qs.stringify(params);
+      // },
     };
 
     return axios(config)
