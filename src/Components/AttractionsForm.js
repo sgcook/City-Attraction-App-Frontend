@@ -8,7 +8,6 @@ const AttractionsForm = ({ query, setQuery }) => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   const initialState = {
     museumsGalleries: false,
     parksGardens: false,
@@ -81,7 +80,6 @@ const AttractionsForm = ({ query, setQuery }) => {
         <br />
         Any
         <input
-          type="checkbox"
           id="any"
           name="any"
           checked={fields.any}
@@ -94,6 +92,7 @@ const AttractionsForm = ({ query, setQuery }) => {
             handleOnChange(e);
           }}
         />
+        <br />
       </label>
     </div>
   );

@@ -14,16 +14,6 @@ body {
     max-width: 600px;
 }
 
-.pathway {
-    text-align: right;
-    color: black;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 40px;
-    padding-right: 40px;
-    max-width: 600px;
-}
-
 .navbar {
     text-align: center;
     padding: 0;
