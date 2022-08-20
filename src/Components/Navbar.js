@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../Styles/navbar.css";
 import PropTypes from "prop-types";
 
 const Navbar = ({ markers }) => {
