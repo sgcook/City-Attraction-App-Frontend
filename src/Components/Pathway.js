@@ -130,7 +130,6 @@ const Pathway = ({ allPlaces, setButtonClicked }) => {
                   );
                 })}
             </ol>
-            {direction.routes && console.log(direction.routes[0].legs[0])}
             {index > 0 && (
               <button
                 type="button"
