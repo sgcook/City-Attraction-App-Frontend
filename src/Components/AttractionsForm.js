@@ -28,8 +28,8 @@ const AttractionsForm = ({ query, setQuery }) => {
   };
   return (
     <div>
-      <p>I'd like to visit...</p>
       <label htmlFor="attractions">
+        <p>I'd like to visit...</p>
         Museums/Galleries
         <input
           type="checkbox"
@@ -80,6 +80,7 @@ const AttractionsForm = ({ query, setQuery }) => {
         <br />
         Any
         <input
+          type="checkbox"
           id="any"
           name="any"
           checked={fields.any}

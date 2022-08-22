@@ -54,11 +54,11 @@ const Home = ({ setMarkers }) => {
   return (
     <div className="home">
       <div className="home-header">
-        <h1>CityWalk</h1>
+        <h1>CityTrek</h1>
       </div>
       <p>We'll plan your walking tour of the city. Where are you going?</p>
       <form className="home-form">
-        <label htmlFor="home-city">
+        <label htmlFor="home-city" className="home-city">
           <p>I'm going to...</p>
           <select
             className="select"
@@ -75,8 +75,8 @@ const Home = ({ setMarkers }) => {
             <option value="manchester">Manchester</option>
           </select>
         </label>
-        <p>How much walking do you want to do?</p>
-        <label htmlFor="walking">
+        <label htmlFor="walking" className="walking">
+          <p>How much walking do you want to do?</p>
           <select
             className="select"
             defaultValue="DEFAULT"
@@ -90,7 +90,7 @@ const Home = ({ setMarkers }) => {
             <option value="plenty">Plenty</option>
           </select>
         </label>
-        <label htmlFor="interest-in" className="checkbox">
+        <label htmlFor="interest-in" className="interested-in">
           <p>I'm interested in...</p>
           Eating/Drinking
           <input
@@ -115,20 +115,20 @@ const Home = ({ setMarkers }) => {
         </label>
         {eatingDrinking && <EatDrinkForm query={query} setQuery={setQuery} />}
         {attractions && <AttractionsForm query={query} setQuery={setQuery} />}
-        <Link className="navbar-item" to="/itinerary">
-          <button
-            type="submit"
-            onClick={() => {
-              /* Will have to change to be response from backend */
-              console.log(query);
-              setMarkers(true);
-              getPlaces();
-            }}
-          >
-            Plan my day!
-          </button>
-        </Link>
       </form>
+      <Link className="navbar-item" to="/itinerary">
+        <button
+          type="submit"
+          onClick={() => {
+            /* Will have to change to be response from backend */
+            console.log(query);
+            setMarkers(true);
+            getPlaces();
+          }}
+        >
+          Plan my day!
+        </button>
+      </Link>
     </div>
   );
 };

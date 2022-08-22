@@ -1,8 +1,13 @@
 * {
-    background-color: gold;
-    text-align: center;
-    color: black;
     font-family: 'Source Sans Pro', sans-serif;
+}
+
+body {
+    background-color: gold;
+}
+
+.home {
+    text-align: center;
     margin-left: auto;
     margin-right: auto;
     padding-left: 40px;
@@ -17,17 +22,20 @@
 }
 
 .select {
-    margin: 5px;
+    text-align: center;
+    display: inline-block;
     border-radius: 10px;
     width: 110px;
     height: 25px;
 }
 
-.input {
-    margin: 5px;
-    border-radius: 10px;
-    width: 110px;
-    height: 20px;
+input {
+    vertical-align: middle;
+    float: right;
+}
+
+.cuisine {
+    display: inline;
 }
 
 button {
@@ -50,16 +58,65 @@ button {
 }
 
 .home-form {
-    position: relative;
-    display: inline-block;
     vertical-align: middle;
+    border: 4px solid rgb(252, 255, 232);
+    border-radius: 15px;
+    padding: 2vh;
 }
 
 .checkbox {
+    display: block;
     line-height: 28px;
     text-align: center;
 }
 
-/* @media screen and (min-device-width: 1200px) {
+@media screen and (min-device-width: 1200px) {
+    .home {
+    max-width: 600px;
+    padding: 0;
+    }
 
-} */
+    .home-form {
+    display: grid;
+    /* grid-template-columns: 28vh 35vh 35vh; */
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto;
+    text-align: left;
+    padding: 15px;
+    border: 5px solid rgb(252, 255, 232);
+    border-radius: 10px;
+    }
+
+    .grid-container > div {
+    padding: 20px;
+    }
+
+    .home-city {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    }
+    
+    .walking {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    }
+
+    .interested-in {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    }
+
+    input {
+    vertical-align: middle;
+    margin-right: 35px;
+    float: right;
+    }
+
+    .checkbox {
+    text-align: left;
+    }
+
+    .navbar-item {
+    text-align: center;
+    }
+}

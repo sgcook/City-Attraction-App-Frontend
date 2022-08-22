@@ -30,8 +30,8 @@ const EatDrinkForm = ({ query, setQuery }) => {
   };
   return (
     <div>
-      <p>I'm looking for...</p>
-      <label htmlFor="eatdrinktype">
+      <label htmlFor="eatdrinktype" className="eatdrinktype">
+        <p>I'm looking for...</p>
         Restaurants
         <input
           type="checkbox"
