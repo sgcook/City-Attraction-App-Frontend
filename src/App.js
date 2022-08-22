@@ -21,7 +21,11 @@ const App = () => {
       </header>
       <Routes>
         <Route exact path="/" element={<Home setMarkers={setMarkers} />} />
-        <Route exact path="/itinerary" element={<Itinerary />} />
+        <Route
+          exact
+          path="/itinerary"
+          element={<Itinerary markers={markers} />}
+        />
         <Route exact path="/about" element={<About />} />
       </Routes>
     </div>

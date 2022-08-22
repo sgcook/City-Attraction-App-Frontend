@@ -23,7 +23,21 @@ const Navbar = ({ markers }) => {
 };
 
 Navbar.propTypes = {
-  markers: PropTypes.bool.isRequired,
+  markers: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      city: PropTypes.string.isRequired,
+      attraction_type: PropTypes.string.isRequired,
+      latitude: PropTypes.number.isRequired,
+      longitude: PropTypes.number.isRequired,
+      mobility_level: PropTypes.string.isRequired,
+      outside_inside: PropTypes.string.isRequired,
+      place_name: PropTypes.string.isRequired,
+      postcode: PropTypes.string.isRequired,
+      price: PropTypes.string.isRequired,
+      rating: PropTypes.number.isRequired,
+    }).isRequired
+  ).isRequired,
 };
 
 export default Navbar;

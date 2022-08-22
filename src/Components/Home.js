@@ -37,10 +37,10 @@ const Home = ({ setMarkers }) => {
     };
 
     return axios(config)
-      .then(function (response) {
-        console.log(JSON.stringify(response.data));
+      .then((response) => {
+        setMarkers(response.data);
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error);
       });
   };
@@ -114,8 +114,6 @@ const Home = ({ setMarkers }) => {
             type="submit"
             onClick={() => {
               /* Will have to change to be response from backend */
-              console.log(query);
-              setMarkers(true);
               getPlaces();
             }}
           >

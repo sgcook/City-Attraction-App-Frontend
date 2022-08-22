@@ -7,20 +7,20 @@ import { findAverageCoords } from "../helpers";
 const Pathway = ({ allPlaces, setButtonClicked }) => {
   const [averageCoords, setAverageCoords] = useState(null);
   const [direction, setDirection] = useState([]);
-  const pathway = allPlaces;
   const [index, setIndex] = useState(0);
 
+  let pathway;
+  if (allPlaces) {
+    pathway = allPlaces;
+  }
+
   useEffect(() => {
-    const latCoords = [
-      pathway[index].coordinates[0],
-      pathway[index + 1].coordinates[0],
-    ];
-    const lngCoords = [
-      pathway[index].coordinates[1],
-      pathway[index + 1].coordinates[1],
-    ];
-    setAverageCoords(findAverageCoords(latCoords, lngCoords));
-    setDirection([]);
+    if (pathway) {
+      const latCoords = [pathway[index].latitude, pathway[index + 1].longitude];
+      const lngCoords = [pathway[index].latitude, pathway[index + 1].longitude];
+      setAverageCoords(findAverageCoords(latCoords, lngCoords));
+      setDirection([]);
+    }
   }, [index, pathway]);
 
   const fetchDirection = () => {
@@ -29,12 +29,12 @@ const Pathway = ({ allPlaces, setButtonClicked }) => {
     DirectionsService.route(
       {
         origin: {
-          lat: pathway[index].coordinates[0],
-          lng: pathway[index].coordinates[1],
+          lat: pathway[index].latitude,
+          lng: pathway[index].longitude,
         },
         destination: {
-          lat: pathway[index + 1].coordinates[0],
-          lng: pathway[index + 1].coordinates[1],
+          lat: pathway[index + 1].latitude,
+          lng: pathway[index + 1].longitude,
         },
         travelMode: window.google.maps.TravelMode.WALKING,
       },
@@ -74,17 +74,17 @@ const Pathway = ({ allPlaces, setButtonClicked }) => {
             onCenterChanged={fetchDirection}
           >
             <MarkerF
-              key={pathway[index].coordinates}
+              key={[pathway[index].latitude, pathway[index].longitude]}
               position={{
-                lat: pathway[index].coordinates[0],
-                lng: pathway[index].coordinates[1],
+                lat: pathway[index].latitude,
+                lng: pathway[index].longitude,
               }}
             />
             <MarkerF
-              key={pathway[index + 1].coordinates}
+              key={[pathway[index + 1].latitude, pathway[index + 1].longitude]}
               position={{
-                lat: pathway[index + 1].coordinates[0],
-                lng: pathway[index + 1].coordinates[1],
+                lat: pathway[index + 1].latitude,
+                lng: pathway[index + 1].longitude,
               }}
             />
             {direction && <DirectionsRenderer directions={direction} />}
@@ -93,7 +93,7 @@ const Pathway = ({ allPlaces, setButtonClicked }) => {
             <div className="pathway-text">
               <p className="pathway-header">
                 <b>Start: </b>
-                {pathway[index].restaurant}
+                {pathway[index].place_name}
               </p>
               <p className="pathway-header">
                 <b>Address: </b>
@@ -103,7 +103,7 @@ const Pathway = ({ allPlaces, setButtonClicked }) => {
             <div className="pathway-text">
               <p className="pathway-header">
                 <b>Stop: </b>
-                {pathway[index + 1].restaurant}
+                {pathway[index + 1].place_name}
               </p>
               <p className="pathway-header">
                 <b>Address: </b>
