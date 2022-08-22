@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+// eslint-disable-next-line import/no-named-as-default
 import CuisineForm from "./CuisineForm";
 
 const EatDrinkForm = ({ query, setQuery }) => {

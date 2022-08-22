@@ -111,27 +111,11 @@ const Home = ({ setMarkers }) => {
         {console.log(query)}
         {eatingDrinking && <EatDrinkForm query={query} setQuery={setQuery} />}
         {attractions && <AttractionsForm query={query} setQuery={setQuery} />}
-<<<<<<< HEAD
-=======
-        <Link className="navbar-item" to="/itinerary">
-          <button
-            type="submit"
-            onClick={() => {
-              getPlaces();
-            }}
-          >
-            Plan my day!
-          </button>
-        </Link>
->>>>>>> main
       </form>
       <Link className="navbar-item" to="/itinerary">
         <button
           type="submit"
           onClick={() => {
-            /* Will have to change to be response from backend */
-            console.log(query);
-            setMarkers(true);
             getPlaces();
           }}
         >
