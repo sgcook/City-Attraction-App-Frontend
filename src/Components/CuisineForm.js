@@ -32,7 +32,6 @@ const CuisineForm = ({ query, setQuery }) => {
 
   return (
     <div>
-<<<<<<< HEAD
       <label htmlFor="cuisine" className="cuisine">
         <p>Great! What kind of food do you like?</p>
         <div>
@@ -188,7 +187,6 @@ const CuisineForm = ({ query, setQuery }) => {
             }}
           />
         </div>
-=======
       <p>Great! What kind of food do you like?</p>
       <label htmlFor="cuisine" className="checkbox">
         Asian
@@ -313,7 +311,6 @@ const CuisineForm = ({ query, setQuery }) => {
             handleOnChange(e);
           }}
         />
->>>>>>> main
       </label>
     </div>
   );
