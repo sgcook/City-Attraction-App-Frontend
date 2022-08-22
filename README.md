@@ -15,7 +15,7 @@ By selecting your preferred city, mobility, eating and drinking, and attractions
 
 ## How to use:
 
-After cloning the app using `$`\
+After cloning the app using `$https://github.com/sgcook/City-Attraction-App-Frontend`\
 
 Run these commands in the terminal:\
 `$npm install` to install code dependencies\
@@ -24,7 +24,7 @@ Run these commands in the terminal:\
 
 ## Backend
 
-See https://github.com/EmmaWenham/City-Attraction-App for the backend
+See `$https://github.com/EmmaWenham/City-Attraction-App` for the backend
 
 ### Built with:
 

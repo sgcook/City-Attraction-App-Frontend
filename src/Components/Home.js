@@ -27,26 +27,21 @@ const Home = ({ setMarkers }) => {
       params: {
         city: query.city,
         mobility: query.mobility,
-        restaurantType: query.restaurantType
-          .map((n, index) => `restaurants[${index}]=${n}`)
-          .join("&"),
-        cuisine: query.cuisine
-          .map((n, index) => `restaurants[${index}]=${n}`)
-          .join("&"),
-        attractionType: query.attractionType
-          .map((n, index) => `restaurants[${index}]=${n}`)
-          .join("&"),
+        restaurantType: query.restaurantType,
+        cuisine: query.cuisine,
+        attractionType: query.attractionType,
       },
-      // paramsSerializer: (params) => {
-      //   return qs.stringify(params);
-      // },
+      paramsSerializer: (params) => {
+        return qs.stringify(params, { encode: false });
+      },
     };
 
     return axios(config)
-      .then(function (response) {
-        console.log(JSON.stringify(response.data));
+      .then((response) => {
+        console.log(response.data);
+        setMarkers(response.data);
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error);
       });
   };
@@ -68,11 +63,11 @@ const Home = ({ setMarkers }) => {
             <option value="DEFAULT" disabled>
               Choose a city
             </option>
-            <option value="birmingham">Birmingham</option>
-            <option value="glasgow">Glasgow</option>
-            <option value="liverpool">Liverpool</option>
-            <option value="london">London</option>
-            <option value="manchester">Manchester</option>
+            <option value="Birmingham">Birmingham</option>
+            <option value="Glasgow">Glasgow</option>
+            <option value="Liverpool">Liverpool</option>
+            <option value="London">London</option>
+            <option value="Manchester">Manchester</option>
           </select>
         </label>
         <label htmlFor="walking" className="walking">
@@ -85,9 +80,9 @@ const Home = ({ setMarkers }) => {
             <option value="DEFAULT" disabled>
               Walking Length
             </option>
-            <option value="minimum">Minimum</option>
-            <option value="moderate">Moderate</option>
-            <option value="plenty">Plenty</option>
+            <option value="Minimum">Minimum</option>
+            <option value="Moderate">Moderate</option>
+            <option value="Plenty">Plenty</option>
           </select>
         </label>
         <label htmlFor="interest-in" className="interested-in">
@@ -113,8 +108,22 @@ const Home = ({ setMarkers }) => {
           />
           <br />
         </label>
+        {console.log(query)}
         {eatingDrinking && <EatDrinkForm query={query} setQuery={setQuery} />}
         {attractions && <AttractionsForm query={query} setQuery={setQuery} />}
+<<<<<<< HEAD
+=======
+        <Link className="navbar-item" to="/itinerary">
+          <button
+            type="submit"
+            onClick={() => {
+              getPlaces();
+            }}
+          >
+            Plan my day!
+          </button>
+        </Link>
+>>>>>>> main
       </form>
       <Link className="navbar-item" to="/itinerary">
         <button

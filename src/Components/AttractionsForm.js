@@ -26,6 +26,14 @@ const AttractionsForm = ({ query, setQuery }) => {
       });
     }
   };
+
+  const addRemoveQuery = (e) => {
+    setQuery({
+      ...query,
+      attractionType: [...query.attractionType, e.target.value],
+    });
+  };
+
   return (
     <div>
       <label htmlFor="attractions">
@@ -38,11 +46,8 @@ const AttractionsForm = ({ query, setQuery }) => {
           value="museumsGalleries"
           checked={fields.museumsGalleries}
           onChange={(e) => {
-            setQuery({
-              ...query,
-              attractionType: [...query.attractionType, e.target.value],
-            });
             handleOnChange(e);
+            addRemoveQuery(e);
           }}
         />
         <br />
@@ -54,11 +59,8 @@ const AttractionsForm = ({ query, setQuery }) => {
           value="parksGardens"
           checked={fields.parksGardens}
           onChange={(e) => {
-            setQuery({
-              ...query,
-              attractionType: [...query.attractionType, e.target.value],
-            });
             handleOnChange(e);
+            addRemoveQuery(e);
           }}
         />
         <br />
@@ -70,11 +72,8 @@ const AttractionsForm = ({ query, setQuery }) => {
           value="landmarksMonuments"
           checked={fields.landmarksMonuments}
           onChange={(e) => {
-            setQuery({
-              ...query,
-              attractionType: [...query.attractionType, e.target.value],
-            });
             handleOnChange(e);
+            addRemoveQuery(e);
           }}
         />
         <br />
@@ -86,11 +85,8 @@ const AttractionsForm = ({ query, setQuery }) => {
           checked={fields.any}
           value="any"
           onChange={(e) => {
-            setQuery({
-              ...query,
-              attractionType: [...query.attractionType, e.target.value],
-            });
             handleOnChange(e);
+            addRemoveQuery(e);
           }}
         />
         <br />

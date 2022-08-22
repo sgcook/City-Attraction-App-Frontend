@@ -14,7 +14,6 @@ const CuisineForm = ({ query, setQuery }) => {
     european: false,
     vegetarianVegan: false,
     middleEastern: false,
-    caribbean: false,
     other: false,
     any: false,
   };
@@ -33,6 +32,7 @@ const CuisineForm = ({ query, setQuery }) => {
 
   return (
     <div>
+<<<<<<< HEAD
       <label htmlFor="cuisine" className="cuisine">
         <p>Great! What kind of food do you like?</p>
         <div>
@@ -188,6 +188,132 @@ const CuisineForm = ({ query, setQuery }) => {
             }}
           />
         </div>
+=======
+      <p>Great! What kind of food do you like?</p>
+      <label htmlFor="cuisine" className="checkbox">
+        Asian
+        <input
+          type="checkbox"
+          id="asian"
+          name="asian"
+          value="asian"
+          checked={fields.asian}
+          onChange={(e) => {
+            setQuery({
+              ...query,
+              cuisine: [...query.cuisine, e.target.value],
+            });
+            handleOnChange(e);
+          }}
+        />
+        British/American
+        <input
+          type="checkbox"
+          id="britishAmerican"
+          name="britishAmerican"
+          value="britishAmerican"
+          checked={fields.britishAmerican}
+          onChange={(e) => {
+            setQuery({
+              ...query,
+              cuisine: [...query.cuisine, e.target.value],
+            });
+            handleOnChange(e);
+          }}
+        />
+        Indian
+        <input
+          type="checkbox"
+          id="indian"
+          name="indian"
+          value="indian"
+          checked={fields.indian}
+          onChange={(e) => {
+            setQuery({
+              ...query,
+              cuisine: [...query.cuisine, e.target.value],
+            });
+            handleOnChange(e);
+          }}
+        />
+        <br />
+        European
+        <input
+          type="checkbox"
+          id="european"
+          name="european"
+          value="european"
+          checked={fields.european}
+          onChange={(e) => {
+            setQuery({
+              ...query,
+              cuisine: [...query.cuisine, e.target.value],
+            });
+            handleOnChange(e);
+          }}
+        />
+        Vegetarian/Vegan
+        <input
+          type="checkbox"
+          id="vegetarianVegan"
+          name="vegetarianVegan"
+          value="vegetarianVegan"
+          checked={fields.vegetarianVegan}
+          onChange={(e) => {
+            setQuery({
+              ...query,
+              cuisine: [...query.cuisine, e.target.value],
+            });
+            handleOnChange(e);
+          }}
+        />
+        Middle-Eastern
+        <br />
+        <input
+          type="checkbox"
+          id="middleEastern"
+          name="middleEastern"
+          value="middleEastern"
+          checked={fields.middleEastern}
+          onChange={(e) => {
+            setQuery({
+              ...query,
+              cuisine: [...query.cuisine, e.target.value],
+            });
+            handleOnChange(e);
+          }}
+        />
+        Other
+        <input
+          type="checkbox"
+          id="other"
+          name="other"
+          value="other"
+          checked={fields.other}
+          onChange={(e) => {
+            setQuery({
+              ...query,
+              cuisine: [...query.cuisine, e.target.value],
+            });
+            handleOnChange(e);
+          }}
+        />
+        Any
+        <input
+          type="checkbox"
+          id="any"
+          name="any"
+          value="any"
+          checked={fields.any}
+          onChange={(e) => {
+            setQuery({
+              ...query,
+              cuisine: [...query.cuisine, e.target.value],
+            });
+            handleOnChange(e);
+          }}
+        />
+>>>>>>> main
       </label>
     </div>
   );

@@ -10,7 +10,7 @@ const EatDrinkForm = ({ query, setQuery }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const initialState = {
-    restaurants: false,
+    restaurant: false,
     cafes: false,
     pubsBars: false,
     any: false,
@@ -35,10 +35,10 @@ const EatDrinkForm = ({ query, setQuery }) => {
         Restaurants
         <input
           type="checkbox"
-          id="restaurants"
-          name="restaurants"
-          checked={fields.restaurants}
-          value="restaurants"
+          id="restaurant"
+          name="restaurant"
+          checked={fields.restaurant}
+          value="restaurant"
           onChange={(e) => {
             setQuery({
               ...query,

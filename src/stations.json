@@ -1,0 +1,37 @@
+[
+  {
+    "address": "Piccadilly Station Approach, Manchester M60 7RA",
+    "city": "manchester",
+    "latitude": 53.47742615773809,
+    "longitude": -2.2311720661564736,
+    "place_name": "Manchester Piccadilly"
+  },
+  {
+    "address": "",
+    "city": "liverpool",
+    "latitude": 53.40465505112632,
+    "longitude": -2.9800088233613056,
+    "place_name": "Lime Street"
+  },
+  {
+    "address": "Station St, Birmingham B2 4QA",
+    "city": "birmingham",
+    "latitude": 52.4777654153648,
+    "longitude": -1.8989640367238785,
+    "place_name": "New Street"
+  },
+  {
+    "address": "Gordon St, Glasgow G1 3SL",
+    "city": "glasgow",
+    "latitude": 55.859120812594185,
+    "longitude": -4.258096061153975,
+    "place_name": "Glasgow Central"
+  },
+  {
+    "address": "Euston Rd, London NW1 2RT",
+    "city": "london",
+    "latitude": 51.52810909174548,
+    "longitude": -0.13320773126015856,
+    "place_name": "London Euston"
+  }
+]
