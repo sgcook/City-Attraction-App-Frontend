@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 
 const CuisineForm = ({ query, setQuery }) => {
@@ -7,28 +7,28 @@ const CuisineForm = ({ query, setQuery }) => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const initialState = {
-    asian: false,
-    britishAmerican: false,
-    indian: false,
-    european: false,
-    vegetarianVegan: false,
-    middleEastern: false,
-    other: false,
-    any: false,
-  };
-  const [fields, setFields] = useState(initialState);
-  const handleOnChange = (e) => {
-    const { name } = e.target;
-    const { checked } = e.target;
-    if (name === "any") {
-      setFields({ ...initialState, any: true });
-    } else {
-      setFields((previousState) => {
-        return { ...previousState, [name]: checked, any: false };
-      });
-    }
-  };
+  // const initialState = {
+  //   asian: false,
+  //   britishAmerican: false,
+  //   indian: false,
+  //   european: false,
+  //   vegetarianVegan: false,
+  //   middleEastern: false,
+  //   other: false,
+  //   any: false,
+  // };
+  // const [fields, setFields] = useState(initialState);
+  // const handleOnChange = (e) => {
+  //   const { name } = e.target;
+  //   const { checked } = e.target;
+  //   if (name === "any") {
+  //     setFields({ ...initialState, any: true });
+  //   } else {
+  //     setFields((previousState) => {
+  //       return { ...previousState, [name]: checked, any: false };
+  //     });
+  //   }
+  // };
 
   return (
     <div className="cuisine">
@@ -41,13 +41,13 @@ const CuisineForm = ({ query, setQuery }) => {
             id="asian"
             name="asian"
             value="asian"
-            checked={fields.asian}
+            // checked={fields.asian}
             onChange={(e) => {
               setQuery({
                 ...query,
                 cuisine: [...query.cuisine, e.target.value],
               });
-              handleOnChange(e);
+              // handleOnChange(e);
             }}
           />
         </label>
@@ -59,13 +59,13 @@ const CuisineForm = ({ query, setQuery }) => {
             id="britishAmerican"
             name="britishAmerican"
             value="britishAmerican"
-            checked={fields.britishAmerican}
+            // checked={fields.britishAmerican}
             onChange={(e) => {
               setQuery({
                 ...query,
                 cuisine: [...query.cuisine, e.target.value],
               });
-              handleOnChange(e);
+              // handleOnChange(e);
             }}
           />
         </label>
@@ -77,13 +77,13 @@ const CuisineForm = ({ query, setQuery }) => {
             id="indian"
             name="indian"
             value="indian"
-            checked={fields.indian}
+            // checked={fields.indian}
             onChange={(e) => {
               setQuery({
                 ...query,
                 cuisine: [...query.cuisine, e.target.value],
               });
-              handleOnChange(e);
+              // handleOnChange(e);
             }}
           />
         </label>
@@ -95,13 +95,13 @@ const CuisineForm = ({ query, setQuery }) => {
             id="european"
             name="european"
             value="european"
-            checked={fields.european}
+            // checked={fields.european}
             onChange={(e) => {
               setQuery({
                 ...query,
                 cuisine: [...query.cuisine, e.target.value],
               });
-              handleOnChange(e);
+              // handleOnChange(e);
             }}
           />
         </label>
@@ -113,13 +113,13 @@ const CuisineForm = ({ query, setQuery }) => {
             id="vegetarianVegan"
             name="vegetarianVegan"
             value="vegetarianVegan"
-            checked={fields.vegetarianVegan}
+            // checked={fields.vegetarianVegan}
             onChange={(e) => {
               setQuery({
                 ...query,
                 cuisine: [...query.cuisine, e.target.value],
               });
-              handleOnChange(e);
+              // handleOnChange(e);
             }}
           />
         </label>
@@ -131,13 +131,13 @@ const CuisineForm = ({ query, setQuery }) => {
             id="middleEastern"
             name="middleEastern"
             value="middleEastern"
-            checked={fields.middleEastern}
+            // checked={fields.middleEastern}
             onChange={(e) => {
               setQuery({
                 ...query,
                 cuisine: [...query.cuisine, e.target.value],
               });
-              handleOnChange(e);
+              // handleOnChange(e);
             }}
           />
         </label>
@@ -149,13 +149,13 @@ const CuisineForm = ({ query, setQuery }) => {
             id="caribbean"
             name="caribbean"
             value="caribbean"
-            checked={fields.caribbean}
+            // checked={fields.caribbean}
             onChange={(e) => {
               setQuery({
                 ...query,
                 cuisine: [...query.cuisine, e.target.value],
               });
-              handleOnChange(e);
+              // handleOnChange(e);
             }}
           />
         </label>
@@ -167,34 +167,17 @@ const CuisineForm = ({ query, setQuery }) => {
             id="other"
             name="other"
             value="other"
-            checked={fields.other}
+            // checked={fields.other}
             onChange={(e) => {
               setQuery({
                 ...query,
                 cuisine: [...query.cuisine, e.target.value],
               });
-              handleOnChange(e);
+              // handleOnChange(e);
             }}
           />
         </label>
         <br />
-        <label htmlFor="any" className="any">
-          Any
-          <input
-            type="checkbox"
-            id="any"
-            name="any"
-            value="any"
-            checked={fields.any}
-            onChange={(e) => {
-              setQuery({
-                ...query,
-                cuisine: [...query.cuisine, e.target.value],
-              });
-              handleOnChange(e);
-            }}
-          />
-        </label>
       </label>
     </div>
   );

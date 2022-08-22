@@ -6,7 +6,8 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import EatDrinkForm from "./EatDrinkForm";
 import AttractionsForm from "./AttractionsForm";
-import logo from "./CityTrek-1.png";
+import logo1 from "./CityTrek-1.png";
+import logo2 from "./CityTrek-2.png";
 
 const Home = ({ setMarkers }) => {
   const [eatingDrinking, setEatingDrinking] = useState(false);
@@ -49,8 +50,11 @@ const Home = ({ setMarkers }) => {
 
   return (
     <div className="home">
-      <div className="home-header">
-        <img src={logo} alt="CityTreklogo" height="120" />
+      <div className="logo1">
+       <img src={logo1} alt="CityTreklogo" height="120" className="logo1" />
+      </div>
+      <div className="logo2">
+        <img src={logo2} alt="CityTreklogo" height="120" className="logo2" />
       </div>
       <p>We'll plan your walking tour of the city. Where are you going?</p>
       <form className="home-form">
@@ -100,6 +104,7 @@ const Home = ({ setMarkers }) => {
             />
           </label>
           <br />
+          {eatingDrinking && <EatDrinkForm query={query} setQuery={setQuery} />}
           <label htmlFor="attractions" className="attractions">
             Attractions
             <input
@@ -111,11 +116,9 @@ const Home = ({ setMarkers }) => {
               onChange={toggleSelection}
             />
           </label>
+          {attractions && <AttractionsForm query={query} setQuery={setQuery} />}
           <br />
         </label>
-        {console.log(query)}
-        {eatingDrinking && <EatDrinkForm query={query} setQuery={setQuery} />}
-        {attractions && <AttractionsForm query={query} setQuery={setQuery} />}
       </form>
       <Link className="navbar-item" to="/itinerary">
         <button

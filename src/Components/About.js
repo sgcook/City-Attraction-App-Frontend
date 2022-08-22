@@ -6,7 +6,7 @@ const About = () => {
     <div className="home">
       <h1>CityTrek</h1>
       <p>
-        Greetings, traveller! CityWalk is an app that plans your walking tour of
+        Greetings, traveller! CityTrek is an app that plans your walking tour of
         the city, with suggestions for eating, drinking and sightseeing thrown
         in. Tell us where you're going, what you'd like to see, your favourite
         cuisine and how far you'd like to walk, and we'll design your perfect
