@@ -30,76 +30,84 @@ const EatDrinkForm = ({ query, setQuery }) => {
     }
   };
   return (
-    <div>
+    <div className="eatdrinktype">
+      <p>I'm looking for...</p>
       <label htmlFor="eatdrinktype" className="eatdrinktype">
-        <p>I'm looking for...</p>
-        Restaurants
-        <input
-          type="checkbox"
-          id="restaurant"
-          name="restaurant"
-          checked={fields.restaurant}
-          value="restaurant"
-          onChange={(e) => {
-            setQuery({
-              ...query,
-              restaurantType: [...query.restaurantType, e.target.value],
-            });
-            handleOnChange(e);
-            setCuisine(!cuisine);
-          }}
-        />
+        <label htmlFor="restaurant" className="restaurant">
+          Restaurants
+          <input
+            type="checkbox"
+            id="restaurant"
+            name="restaurant"
+            checked={fields.restaurant}
+            value="restaurant"
+            onChange={(e) => {
+              setQuery({
+                ...query,
+                restaurantType: [...query.restaurantType, e.target.value],
+              });
+              handleOnChange(e);
+              setCuisine(!cuisine);
+            }}
+          />
+        </label>
         <br />
-        Cafés
-        <input
-          type="checkbox"
-          id="cafe"
-          name="cafe"
-          value="cafe"
-          checked={fields.cafe}
-          onChange={(e) => {
-            setQuery({
-              ...query,
-              restaurantType: [...query.restaurantType, e.target.value],
-            });
-            handleOnChange(e);
-          }}
-        />
+        <label htmlFor="cafe" className="cafe">
+          Cafés
+          <input
+            type="checkbox"
+            id="cafe"
+            name="cafe"
+            value="cafe"
+            checked={fields.cafe}
+            onChange={(e) => {
+              setQuery({
+                ...query,
+                restaurantType: [...query.restaurantType, e.target.value],
+              });
+              handleOnChange(e);
+            }}
+          />
+        </label>
         <br />
-        Pubs/Bars
-        <input
-          type="checkbox"
-          id="pubsBar"
-          name="pubsBar"
-          value="pubsBar"
-          checked={fields.pubsBar}
-          onChange={(e) => {
-            setQuery({
-              ...query,
-              restaurantType: [...query.restaurantType, e.target.value],
-            });
-            handleOnChange(e);
-          }}
-        />
+        <label htmlFor="pubsBar" className="pubsBar">
+          Pubs/Bars
+          <input
+            type="checkbox"
+            id="pubsBar"
+            name="pubsBar"
+            value="pubsBar"
+            checked={fields.pubsBar}
+            onChange={(e) => {
+              setQuery({
+                ...query,
+                restaurantType: [...query.restaurantType, e.target.value],
+              });
+              handleOnChange(e);
+            }}
+          />
+        </label>
         <br />
-        Any
-        <input
-          type="checkbox"
-          id="any"
-          name="any"
-          value="any"
-          checked={fields.any}
-          onChange={(e) => {
-            setQuery({
-              ...query,
-              restaurantType: [...query.restaurantType, e.target.value],
-            });
-            handleOnChange(e);
-            setCuisine(!cuisine);
-          }}
-        />
+        <label htmlFor="any" className="any">
+          Any
+          <input
+            type="checkbox"
+            id="any"
+            name="any"
+            value="any"
+            checked={fields.any}
+            onChange={(e) => {
+              setQuery({
+                ...query,
+                restaurantType: [...query.restaurantType, e.target.value],
+              });
+              handleOnChange(e);
+              setCuisine(!cuisine);
+            }}
+          />
+        </label>
+        {cuisine && <CuisineForm query={query} setQuery={setQuery} />}
       </label>
-      {cuisine && <CuisineForm query={query} setQuery={setQuery} />}
     </div>
   );
 };

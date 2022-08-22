@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import EatDrinkForm from "./EatDrinkForm";
 import AttractionsForm from "./AttractionsForm";
+import logo from "./CityTrek-1.png";
 
 const Home = ({ setMarkers }) => {
   const [eatingDrinking, setEatingDrinking] = useState(false);
@@ -49,7 +50,7 @@ const Home = ({ setMarkers }) => {
   return (
     <div className="home">
       <div className="home-header">
-        <h1>CityTrek</h1>
+        <img src={logo} alt="CityTreklogo" height="120" />
       </div>
       <p>We'll plan your walking tour of the city. Where are you going?</p>
       <form className="home-form">
@@ -87,25 +88,29 @@ const Home = ({ setMarkers }) => {
         </label>
         <label htmlFor="interest-in" className="interested-in">
           <p>I'm interested in...</p>
-          Eating/Drinking
-          <input
-            type="checkbox"
-            id="eatingdrinking"
-            value={eatingDrinking}
-            checked={eatingDrinking}
-            name="eatingdrinking"
-            onChange={toggleSelection}
-          />
+          <label htmlFor="eatingdrinking" className="eatingdrinking">
+            Eating/Drinking
+            <input
+              type="checkbox"
+              id="eatingdrinking"
+              value={eatingDrinking}
+              checked={eatingDrinking}
+              name="eatingdrinking"
+              onChange={toggleSelection}
+            />
+          </label>
           <br />
-          Attractions
-          <input
-            type="checkbox"
-            id="attractions"
-            value={attractions}
-            checked={attractions}
-            name="attractions"
-            onChange={toggleSelection}
-          />
+          <label htmlFor="attractions" className="attractions">
+            Attractions
+            <input
+              type="checkbox"
+              id="attractions"
+              value={attractions}
+              checked={attractions}
+              name="attractions"
+              onChange={toggleSelection}
+            />
+          </label>
           <br />
         </label>
         {console.log(query)}

@@ -31,7 +31,7 @@ const CuisineForm = ({ query, setQuery }) => {
   };
 
   return (
-    <div>
+    <div className="cuisine">
       <p>Great! What kind of food do you like?</p>
       <label htmlFor="cuisine" className="cuisine">
         <label htmlFor="asian" className="asian">
@@ -51,6 +51,7 @@ const CuisineForm = ({ query, setQuery }) => {
             }}
           />
         </label>
+        <br />
         <label htmlFor="britishAmerican" className="britishAmerican">
           British/American
           <input
@@ -68,6 +69,7 @@ const CuisineForm = ({ query, setQuery }) => {
             }}
           />
         </label>
+        <br />
         <label htmlFor="indian" className="indian">
           Indian
           <input
@@ -85,6 +87,7 @@ const CuisineForm = ({ query, setQuery }) => {
             }}
           />
         </label>
+        <br />
         <label htmlFor="european" className="european">
           European
           <input
@@ -102,6 +105,7 @@ const CuisineForm = ({ query, setQuery }) => {
             }}
           />
         </label>
+        <br />
         <label htmlFor="vegetarianVegan" className="vegetarianVegan">
           Vegetarian/Vegan
           <input
@@ -119,6 +123,7 @@ const CuisineForm = ({ query, setQuery }) => {
             }}
           />
         </label>
+        <br />
         <label htmlFor="middleEastern" className="middleEastern">
           Middle-Eastern
           <input
@@ -136,6 +141,7 @@ const CuisineForm = ({ query, setQuery }) => {
             }}
           />
         </label>
+        <br />
         <label htmlFor="caribbean" className="caribbean">
           Caribbean
           <input
@@ -153,6 +159,7 @@ const CuisineForm = ({ query, setQuery }) => {
             }}
           />
         </label>
+        <br />
         <label htmlFor="other" className="other">
           Other
           <input
@@ -170,6 +177,7 @@ const CuisineForm = ({ query, setQuery }) => {
             }}
           />
         </label>
+        <br />
         <label htmlFor="any" className="any">
           Any
           <input

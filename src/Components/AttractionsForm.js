@@ -36,7 +36,7 @@ const AttractionsForm = ({ query, setQuery }) => {
 
   return (
     <div>
-      <label htmlFor="attractions">
+      <label htmlFor="attractions" className="attractions">
         <p>I'd like to visit...</p>
         Museums/Galleries
         <input
