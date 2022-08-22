@@ -5,6 +5,7 @@ import { findAverageCoords } from "../helpers";
 
 const Map = ({ places, restaurantWaypoints, station }) => {
   const [itineraryDirections, setItineraryDirections] = useState();
+  console.log(places);
 
   const latCoords = places.map((place) => place.latitude);
   const lngcoords = places.map((place) => place.longitude);

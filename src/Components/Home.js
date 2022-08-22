@@ -38,6 +38,7 @@ const Home = ({ setMarkers }) => {
 
     return axios(config)
       .then((response) => {
+        console.log(response.data);
         setMarkers(response.data);
       })
       .catch((error) => {
@@ -62,11 +63,11 @@ const Home = ({ setMarkers }) => {
             <option value="DEFAULT" disabled>
               Choose a city
             </option>
-            <option value="birmingham">Birmingham</option>
-            <option value="glasgow">Glasgow</option>
-            <option value="liverpool">Liverpool</option>
-            <option value="london">London</option>
-            <option value="manchester">Manchester</option>
+            <option value="Birmingham">Birmingham</option>
+            <option value="Glasgow">Glasgow</option>
+            <option value="Liverpool">Liverpool</option>
+            <option value="London">London</option>
+            <option value="Manchester">Manchester</option>
           </select>
         </label>
         <p>How much walking do you want to do?</p>
@@ -79,9 +80,9 @@ const Home = ({ setMarkers }) => {
             <option value="DEFAULT" disabled>
               Walking Length
             </option>
-            <option value="minimum">Minimum</option>
-            <option value="moderate">Moderate</option>
-            <option value="plenty">Plenty</option>
+            <option value="Minimum">Minimum</option>
+            <option value="Moderate">Moderate</option>
+            <option value="Plenty">Plenty</option>
           </select>
         </label>
         <label htmlFor="interest-in" className="checkbox">
@@ -107,13 +108,13 @@ const Home = ({ setMarkers }) => {
           />
           <br />
         </label>
+        {console.log(query)}
         {eatingDrinking && <EatDrinkForm query={query} setQuery={setQuery} />}
         {attractions && <AttractionsForm query={query} setQuery={setQuery} />}
         <Link className="navbar-item" to="/itinerary">
           <button
             type="submit"
             onClick={() => {
-              /* Will have to change to be response from backend */
               getPlaces();
             }}
           >

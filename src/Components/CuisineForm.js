@@ -14,7 +14,6 @@ const CuisineForm = ({ query, setQuery }) => {
     european: false,
     vegetarianVegan: false,
     middleEastern: false,
-    caribbean: false,
     other: false,
     any: false,
   };
@@ -55,7 +54,7 @@ const CuisineForm = ({ query, setQuery }) => {
           type="checkbox"
           id="britishAmerican"
           name="britishAmerican"
-          value="british/american"
+          value="britishAmerican"
           checked={fields.britishAmerican}
           onChange={(e) => {
             setQuery({
@@ -101,7 +100,7 @@ const CuisineForm = ({ query, setQuery }) => {
           type="checkbox"
           id="vegetarianVegan"
           name="vegetarianVegan"
-          value="vegetarian/vegan"
+          value="vegetarianVegan"
           checked={fields.vegetarianVegan}
           onChange={(e) => {
             setQuery({
@@ -117,23 +116,8 @@ const CuisineForm = ({ query, setQuery }) => {
           type="checkbox"
           id="middleEastern"
           name="middleEastern"
-          value="middleeastern"
+          value="middleEastern"
           checked={fields.middleEastern}
-          onChange={(e) => {
-            setQuery({
-              ...query,
-              cuisine: [...query.cuisine, e.target.value],
-            });
-            handleOnChange(e);
-          }}
-        />
-        Caribbean
-        <input
-          type="checkbox"
-          id="caribbean"
-          name="caribbean"
-          value="caribbean"
-          checked={fields.caribbean}
           onChange={(e) => {
             setQuery({
               ...query,
