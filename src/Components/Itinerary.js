@@ -4,73 +4,33 @@ import PropTypes from "prop-types";
 import Map from "./Map";
 import Pathway from "./Pathway";
 import "../Styles/itinerary.css";
+import Stations from "../stations.json";
 
 const Itinerary = ({ markers }) => {
   let places;
   let restaurantWaypoints = null;
-  let station;
   let allPlaces;
+  let station;
 
-  if (markers) {
+  if (markers && markers.length > 0) {
     places = markers.map((place) => {
       return {
         ...place,
+        city: place.city.toLowerCase(),
         latitude: Number(place.latitude),
         longitude: Number(place.longitude),
         rating: Number(place.rating),
       };
     });
-  }
 
-  const stations = [
-    {
-      address: "Piccadilly Station Approach, Manchester M60 7RA",
-      city: "manchester",
-      latitude: 53.47742615773809,
-      longitude: -2.2311720661564736,
-      place_name: "Manchester Piccadilly",
-    },
-    {
-      address: "",
-      city: "liverpool",
-      latitude: 53.40465505112632,
-      longitude: -2.9800088233613056,
-      place_name: "Lime Street",
-    },
-    {
-      address: "Station St, Birmingham B2 4QA",
-      city: "birmingham",
-      latitude: 52.4777654153648,
-      longitude: -1.8989640367238785,
-      place_name: "New Street",
-    },
-    {
-      address: "Gordon St, Glasgow G1 3SL",
-      city: "glasgow",
-      latitude: 55.859120812594185,
-      longitude: -4.258096061153975,
-      place_name: "Glasgow Central",
-    },
-    {
-      address: "Euston Rd, London NW1 2RT",
-      city: "london",
-      latitude: 51.52810909174548,
-      longitude: -0.13320773126015856,
-      place_name: "London Euston",
-    },
-  ];
-
-  if (places) {
     restaurantWaypoints = places.map((place) => {
       return {
         location: { lat: place.latitude, lng: place.longitude },
       };
     });
-    station = stations.find((place) => place.city === places[0].city);
+    station = Stations.find((place) => place.city === places[0].city);
     allPlaces = [station, ...places, station];
   }
-
-  /* need to reassign place */
 
   const [buttonClicked, setButtonClicked] = useState(false);
 
@@ -88,6 +48,13 @@ const Itinerary = ({ markers }) => {
   if (buttonClicked) {
     return (
       <Pathway allPlaces={allPlaces} setButtonClicked={setButtonClicked} />
+    );
+  }
+  if (markers && markers.length === 0) {
+    return (
+      <div>
+        <h1>No places found</h1>
+      </div>
     );
   }
   return (
