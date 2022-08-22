@@ -170,7 +170,7 @@ const CuisineForm = ({ query, setQuery }) => {
             }}
           />
         </label>
-        <label htmlFor="other" className="other">
+        <label htmlFor="any" className="any">
           Any
           <input
             type="checkbox"

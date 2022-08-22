@@ -12,8 +12,8 @@ const EatDrinkForm = ({ query, setQuery }) => {
   }, []);
   const initialState = {
     restaurant: false,
-    cafes: false,
-    pubsBars: false,
+    cafe: false,
+    pubsBar: false,
     any: false,
   };
   const [fields, setFields] = useState(initialState);
@@ -53,10 +53,10 @@ const EatDrinkForm = ({ query, setQuery }) => {
         Cafés
         <input
           type="checkbox"
-          id="cafes"
-          name="cafes"
-          value="cafes"
-          checked={fields.cafes}
+          id="cafe"
+          name="cafe"
+          value="cafe"
+          checked={fields.cafe}
           onChange={(e) => {
             setQuery({
               ...query,
@@ -69,10 +69,10 @@ const EatDrinkForm = ({ query, setQuery }) => {
         Pubs/Bars
         <input
           type="checkbox"
-          id="pubsBars"
-          name="pubsBars"
-          value="pubsBars"
-          checked={fields.pubsBars}
+          id="pubsBar"
+          name="pubsBar"
+          value="pubsBar"
+          checked={fields.pubsBar}
           onChange={(e) => {
             setQuery({
               ...query,
