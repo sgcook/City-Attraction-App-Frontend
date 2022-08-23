@@ -1,37 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
-const AttractionsForm = ({ query, setQuery }) => {
-  useEffect(() => {
-    setQuery({ ...query, attractionType: [] });
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  // const initialState = {
-  //   museumsGalleries: false,
-  //   parksGardens: false,
-  //   landmarksMonuments: false,
-  //   any: false,
-  // };
-  // const [fields, setFields] = useState(initialState);
-  // const handleOnChange = (e) => {
-  //   const { name } = e.target;
-  //   const { checked } = e.target;
-  //   if (name === "any") {
-  //     setFields({ ...initialState, any: true });
-  //   } else {
-  //     setFields((previousState) => {
-  //       return { ...previousState, [name]: checked, any: false };
-  //     });
-  //   }
-  // };
-
-  const addRemoveQuery = (e) => {
-    setQuery({
-      ...query,
-      attractionType: [...query.attractionType, e.target.value],
-    });
+const AttractionsForm = ({ attractionBoxes, setAttractionBoxes }) => {
+  const handleOnChange = (e) => {
+    const { name } = e.target;
+    const { checked } = e.target;
+    setAttractionBoxes({ ...attractionBoxes, [name]: checked });
   };
 
   return (
@@ -44,10 +19,9 @@ const AttractionsForm = ({ query, setQuery }) => {
           id="museumsGalleries"
           name="museumsGalleries"
           value="museumsGalleries"
-          // checked={fields.museumsGalleries}
+          checked={attractionBoxes.museumsGalleries}
           onChange={(e) => {
-            // handleOnChange(e);
-            addRemoveQuery(e);
+            handleOnChange(e);
           }}
         />
         <br />
@@ -57,10 +31,9 @@ const AttractionsForm = ({ query, setQuery }) => {
           id="parksGardens"
           name="parksGardens"
           value="parksGardens"
-          // checked={fields.parksGardens}
+          checked={attractionBoxes.parksGardens}
           onChange={(e) => {
-            // handleOnChange(e);
-            addRemoveQuery(e);
+            handleOnChange(e);
           }}
         />
         <br />
@@ -70,10 +43,9 @@ const AttractionsForm = ({ query, setQuery }) => {
           id="landmarksMonuments"
           name="landmarksMonuments"
           value="landmarksMonuments"
-          // checked={fields.landmarksMonuments}
+          checked={attractionBoxes.landmarksMonuments}
           onChange={(e) => {
-            // handleOnChange(e);
-            addRemoveQuery(e);
+            handleOnChange(e);
           }}
         />
       </label>
@@ -82,13 +54,12 @@ const AttractionsForm = ({ query, setQuery }) => {
 };
 
 AttractionsForm.propTypes = {
-  query: PropTypes.shape({
-    city: PropTypes.string.isRequired,
-    mobility: PropTypes.string.isRequired,
-    restaurantType: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    attractionType: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  attractionBoxes: PropTypes.shape({
+    museumsGalleries: PropTypes.bool.isRequired,
+    parksGardens: PropTypes.bool.isRequired,
+    landmarksMonuments: PropTypes.bool.isRequired,
   }).isRequired,
-  setQuery: PropTypes.func.isRequired,
+  setAttractionBoxes: PropTypes.func.isRequired,
 };
 
 export default AttractionsForm;

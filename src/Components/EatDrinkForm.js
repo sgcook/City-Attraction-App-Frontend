@@ -1,34 +1,20 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-// eslint-disable-next-line import/no-named-as-default
 import CuisineForm from "./CuisineForm";
 
-const EatDrinkForm = ({ query, setQuery }) => {
-  useEffect(() => {
-    setQuery({ ...query, restaurantType: [] });
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  // const initialState = {
-  //   restaurant: false,
-  //   cafe: false,
-  //   pubsBar: false,
-  //   any: false,
-  // };
-  // const [fields, setFields] = useState(initialState);
+const EatDrinkForm = ({
+  cuisineBoxes,
+  eatingDrinkingBoxes,
+  setCuisineBoxes,
+  setEatingDrinkingBoxes,
+}) => {
   const [cuisine, setCuisine] = useState(false);
-  // const handleOnChange = (e) => {
-  //   const { name } = e.target;
-  //   const { checked } = e.target;
-  //   if (name === "any") {
-  //     setFields({ ...initialState, any: true });
-  //   } else {
-  //     setFields((previousState) => {
-  //       return { ...previousState, [name]: checked, any: false };
-  //     });
-  //   }
-  // };
+  const handleOnChange = (e) => {
+    const { name } = e.target;
+    const { checked } = e.target;
+    setEatingDrinkingBoxes({ ...eatingDrinkingBoxes, [name]: checked });
+  };
   return (
     <div className="eatdrinktype">
       <p>I'm looking for...</p>
@@ -39,14 +25,10 @@ const EatDrinkForm = ({ query, setQuery }) => {
           type="checkbox"
           id="restaurant"
           name="restaurant"
-          // checked={fields.restaurant}
+          checked={eatingDrinkingBoxes.restaurant}
           value="restaurant"
           onChange={(e) => {
-            setQuery({
-              ...query,
-              restaurantType: [...query.restaurantType, e.target.value],
-            });
-            // handleOnChange(e);
+            handleOnChange(e);
             setCuisine(!cuisine);
           }}
         />
@@ -58,13 +40,9 @@ const EatDrinkForm = ({ query, setQuery }) => {
             id="cafe"
             name="cafe"
             value="cafe"
-            // checked={fields.cafe}
+            checked={eatingDrinkingBoxes.cafe}
             onChange={(e) => {
-              setQuery({
-                ...query,
-                restaurantType: [...query.restaurantType, e.target.value],
-              });
-              // handleOnChange(e);
+              handleOnChange(e);
             }}
           />
         </label>
@@ -76,30 +54,41 @@ const EatDrinkForm = ({ query, setQuery }) => {
             id="pubsBar"
             name="pubsBar"
             value="pubsBar"
-            // checked={fields.pubsBar}
+            checked={eatingDrinkingBoxes.pubsBar}
             onChange={(e) => {
-              setQuery({
-                ...query,
-                restaurantType: [...query.restaurantType, e.target.value],
-              });
-              // handleOnChange(e);
+              handleOnChange(e);
             }}
           />
         </label>
         <br />
-        {cuisine && <CuisineForm query={query} setQuery={setQuery} />}
+        {cuisine && (
+          <CuisineForm
+            cuisineBoxes={cuisineBoxes}
+            setCuisineBoxes={setCuisineBoxes}
+          />
+        )}
       </label>
     </div>
   );
 };
 
 EatDrinkForm.propTypes = {
-  query: PropTypes.shape({
-    city: PropTypes.string.isRequired,
-    mobility: PropTypes.string.isRequired,
-    restaurantType: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  cuisineBoxes: PropTypes.shape({
+    asian: PropTypes.bool.isRequired,
+    britishAmerican: PropTypes.bool.isRequired,
+    indian: PropTypes.bool.isRequired,
+    european: PropTypes.bool.isRequired,
+    vegetarianVegan: PropTypes.bool.isRequired,
+    middleEastern: PropTypes.bool.isRequired,
+    other: PropTypes.bool.isRequired,
   }).isRequired,
-  setQuery: PropTypes.func.isRequired,
+  eatingDrinkingBoxes: PropTypes.shape({
+    restaurant: PropTypes.bool.isRequired,
+    cafe: PropTypes.bool.isRequired,
+    pubsBar: PropTypes.bool.isRequired,
+  }).isRequired,
+  setCuisineBoxes: PropTypes.func.isRequired,
+  setEatingDrinkingBoxes: PropTypes.func.isRequired,
 };
 
 export default EatDrinkForm;

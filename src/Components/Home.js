@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import qs from "qs";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -10,13 +10,57 @@ import logo1 from "./CityTrek-1.png";
 import logo2 from "./CityTrek-2.png";
 
 const Home = ({ setMarkers }) => {
+  const initialAttraction = {
+    museumsGalleries: false,
+    parksGardens: false,
+    landmarksMonuments: false,
+  };
+  const initalEatingDrinking = {
+    restaurant: false,
+    cafe: false,
+    pubsBar: false,
+  };
+  const initialCuisine = {
+    asian: false,
+    britishAmerican: false,
+    indian: false,
+    european: false,
+    vegetarianVegan: false,
+    middleEastern: false,
+    other: false,
+  };
+
   const [eatingDrinking, setEatingDrinking] = useState(false);
   const [attractions, setAttractions] = useState(false);
   const [query, setQuery] = useState({});
+  const [attractionBoxes, setAttractionBoxes] = useState(initialAttraction);
+  const [eatingDrinkingBoxes, setEatingDrinkingBoxes] =
+    useState(initalEatingDrinking);
+  const [cuisineBoxes, setCuisineBoxes] = useState(initialCuisine);
+
   const toggleSelection = (e) => {
     if (e.target.name === "attractions") setAttractions((prev) => !prev);
     if (e.target.name === "eatingdrinking") setEatingDrinking((prev) => !prev);
   };
+
+  useEffect(() => {
+    const checkedAttractions = Object.keys(attractionBoxes).filter(
+      (key) => attractionBoxes[key]
+    );
+    const checkedEatingDrinking = Object.keys(eatingDrinkingBoxes).filter(
+      (key) => eatingDrinkingBoxes[key]
+    );
+    const checkedCuisine = Object.keys(cuisineBoxes).filter(
+      (key) => cuisineBoxes[key]
+    );
+    setQuery({
+      ...query,
+      restaurantType: checkedEatingDrinking,
+      attractionType: checkedAttractions,
+      cuisine: checkedCuisine,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [attractionBoxes, eatingDrinkingBoxes]);
 
   const getPlaces = () => {
     // const baseUrl = dev ? "localhost:3000" : "actualURL";
@@ -40,7 +84,6 @@ const Home = ({ setMarkers }) => {
 
     return axios(config)
       .then((response) => {
-        console.log(response.data);
         setMarkers(response.data);
       })
       .catch((error) => {
@@ -104,7 +147,16 @@ const Home = ({ setMarkers }) => {
             />
           </label>
           <br />
-          {eatingDrinking && <EatDrinkForm query={query} setQuery={setQuery} />}
+          {eatingDrinking && (
+            <EatDrinkForm
+              query={query}
+              setQuery={setQuery}
+              eatingDrinkingBoxes={eatingDrinkingBoxes}
+              setEatingDrinkingBoxes={setEatingDrinkingBoxes}
+              cuisineBoxes={cuisineBoxes}
+              setCuisineBoxes={setCuisineBoxes}
+            />
+          )}
           <label htmlFor="attractions" className="attractions">
             Attractions
             <input
@@ -116,10 +168,16 @@ const Home = ({ setMarkers }) => {
               onChange={toggleSelection}
             />
           </label>
-          {attractions && <AttractionsForm query={query} setQuery={setQuery} />}
+          {attractions && (
+            <AttractionsForm
+              query={query}
+              setQuery={setQuery}
+              attractionBoxes={attractionBoxes}
+              setAttractionBoxes={setAttractionBoxes}
+            />
+          )}
           <br />
         </label>
-        {console.log(query)}
       </form>
       <Link className="navbar-item" to="/itinerary">
         <button
