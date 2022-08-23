@@ -107,9 +107,12 @@ const Home = ({ setMarkers }) => {
             required
             name="home-city"
             className="select"
+            defaultValue="DEFAULT"
             onChange={(e) => setQuery({ ...query, city: e.target.value })}
           >
-            <option value="">Choose a city</option>
+            <option value="DEFAULT" disabled>
+              Choose a city
+            </option>
             <option value="Birmingham">Birmingham</option>
             <option value="Glasgow">Glasgow</option>
             <option value="Liverpool">Liverpool</option>
