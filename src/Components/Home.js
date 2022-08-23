@@ -104,13 +104,12 @@ const Home = ({ setMarkers }) => {
         <label htmlFor="home-city" className="home-city">
           <p>I'm going to...</p>
           <select
+            required
+            name="home-city"
             className="select"
-            defaultValue="DEFAULT"
             onChange={(e) => setQuery({ ...query, city: e.target.value })}
           >
-            <option value="DEFAULT" disabled>
-              Choose a city
-            </option>
+            <option value="">Choose a city</option>
             <option value="Birmingham">Birmingham</option>
             <option value="Glasgow">Glasgow</option>
             <option value="Liverpool">Liverpool</option>
@@ -178,17 +177,12 @@ const Home = ({ setMarkers }) => {
           )}
           <br />
         </label>
+        <Link className="navbar-item" to="/itinerary">
+          <button type="submit" onClick={getPlaces}>
+            Plan my day!
+          </button>
+        </Link>
       </form>
-      <Link className="navbar-item" to="/itinerary">
-        <button
-          type="submit"
-          onClick={() => {
-            getPlaces();
-          }}
-        >
-          Plan my day!
-        </button>
-      </Link>
     </div>
   );
 };
