@@ -111,76 +111,6 @@ const Home = ({ setMarkers }) => {
         <img src={logo2} alt="CityTreklogo" height="120" className="logo2" />
       </div>
       <p>We'll plan your walking tour of the city. Where are you going?</p>
-      <form className="home-form">
-        <label htmlFor="home-city" className="home-city">
-          <p>I'm going to...</p>
-          <select
-            required
-            name="home-city"
-            className="select"
-            defaultValue="DEFAULT"
-            onChange={(e) => setQuery({ ...query, city: e.target.value })}
-          >
-            <option value="DEFAULT" disabled>
-              Choose a city
-            </option>
-            <option value="Birmingham">Birmingham</option>
-            <option value="Glasgow">Glasgow</option>
-            <option value="Liverpool">Liverpool</option>
-            <option value="London">London</option>
-            <option value="Manchester">Manchester</option>
-          </select>
-        </label>
-        <label htmlFor="walking" className="walking">
-          <p>How much walking do you want to do?</p>
-          <select
-            className="select"
-            defaultValue="DEFAULT"
-            onChange={(e) => setQuery({ ...query, mobility: e.target.value })}
-          >
-            <option value="DEFAULT" disabled>
-              Walking Length
-            </option>
-            <option value="Minimum">Minimum</option>
-            <option value="Moderate">Moderate</option>
-            <option value="Plenty">Plenty</option>
-          </select>
-        </label>
-        <label htmlFor="interest-in" className="interested-in">
-          <p>I'm interested in...</p>
-          <label htmlFor="eatingdrinking" className="eatingdrinking">
-            <b>Eating/Drinking</b>
-            <input
-              type="checkbox"
-              id="eatingdrinking"
-              value={eatingDrinking}
-              checked={eatingDrinking}
-              name="eatingdrinking"
-              onChange={toggleSelection}
-            />
-          </label>
-          {eatingDrinking && (
-            <EatDrinkForm
-              query={query}
-              setQuery={setQuery}
-              eatingDrinkingBoxes={eatingDrinkingBoxes}
-              setEatingDrinkingBoxes={setEatingDrinkingBoxes}
-              cuisineBoxes={cuisineBoxes}
-              setCuisineBoxes={setCuisineBoxes}
-            />
-          )}
-          <br />
-          <label htmlFor="attractions" className="attractions">
-            <b>Attractions</b>
-            <input
-              type="checkbox"
-              id="attractions"
-              value={attractions}
-              checked={attractions}
-              name="attractions"
-              onChange={toggleSelection}
-            />
-=======
       <form>
         <div className="home-form">
           <label htmlFor="home-city" className="home-city">
@@ -216,7 +146,6 @@ const Home = ({ setMarkers }) => {
               <option value="Moderate">Moderate</option>
               <option value="Plenty">Plenty</option>
             </select>
->>>>>>> adf50a0b4d87a6833c3ffc3daad8683cc1f34bfe
           </label>
           <label htmlFor="interest-in" className="interested-in">
             <p>I'm interested in...</p>
