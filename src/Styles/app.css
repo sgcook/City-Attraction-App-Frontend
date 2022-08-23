@@ -1,138 +1,128 @@
-{
+* {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
 body {
-    background-color: gold;
-    text-align: center;
-    color: black;
-    font-family: 'Source Sans Pro', sans-serif;
+  background-color: gold;
+  text-align: center;
+  color: black;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 body {
-    background-color: gold;
+  background-color: gold;
 }
 
 .home {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 40px;
-    padding-right: 40px;
-    max-width: 600px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 40px;
+  padding-right: 40px;
+  max-width: 600px;
 }
 
 .pathway {
-    text-align: right;
-    color: black;
-    font-family: 'Source Sans Pro', sans-serif;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 40px;
-    padding-right: 40px;
-    max-width: 600px;
+  text-align: right;
+  color: black;
+  font-family: 'Source Sans Pro', sans-serif;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 40px;
+  padding-right: 40px;
+  max-width: 600px;
 }
 
 .navbar {
-    text-align: center;
-    padding: 0;
+  text-align: center;
+  padding: 0;
 }
 
 .select {
-    text-align: center;
-    display: inline-block;
-    border-radius: 10px;
-    width: 110px;
-    height: 25px;
+  text-align: center;
+  display: inline-block;
+  border-radius: 10px;
+  width: 110px;
+  height: 25px;
 }
 
 input {
-    vertical-align: middle;
-    float: right;
+  vertical-align: middle;
+  float: right;
 }
 
 .cuisine {
-    display: inline;
+  display: inline;
 }
 
 button {
-    border-radius: 10px;
-    height: 25px;
-    margin: 10px;
+  border-radius: 10px;
+  height: 25px;
+  margin: 10px;
 }
 
 .navbar-item {
-    padding: 15px;
-    display: inline-block;
-    color: black;
-    font-size: 20px;
-    text-decoration: none;
+  padding: 15px;
+  display: inline-block;
+  color: black;
+  font-size: 20px;
+  text-decoration: none;
 }
     
 .navbar-links {
-    padding: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .home-form {
-    vertical-align: middle;
-    border: 4px solid rgb(252, 255, 232);
-    border-radius: 15px;
-    padding: 2vh;
+  vertical-align: middle;
+  border: 4px solid rgb(252, 255, 232);
+  border-radius: 15px;
+  padding: 2vh;
 }
 
 .checkbox {
-    display: block;
-    line-height: 28px;
-    text-align: center;
+  display: block;
+  line-height: 28px;
+  text-align: center;
 }
 
 @media screen and (min-device-width: 1200px) {
-    .home {
+  .home {
     max-width: 600px;
     padding: 0;
-    }
+  }
 
-    .home-form {
-    display: grid;
-    /* grid-template-columns: 28vh 35vh 35vh; */
-    grid-template-columns: auto auto auto;
-    grid-template-rows: auto auto auto;
-    text-align: left;
-    padding: 15px;
+  .home-form {
+    padding-right: 20vh;
+    padding-left: 20vh;
     border: 5px solid rgb(252, 255, 232);
     border-radius: 10px;
-    }
+  }
 
-    .grid-container > div {
-    padding: 20px;
-    }
-
-    .home-city {
-    grid-column-start: 1;
-    grid-column-end: 2;
-    }
-    
-    .walking {
-    grid-column-start: 2;
-    grid-column-end: 4;
-    }
-
-    .interested-in {
-    grid-column-start: 1;
-    grid-column-end: 2;
-    }
-
-    input {
-    vertical-align: middle;
-    margin-right: 35px;
-    float: right;
-    }
-
-    .checkbox {
-    text-align: left;
-    }
-
-    .navbar-item {
+  .navbar-item {
     text-align: center;
+  }
+
+  .logo1 {
+    visibility: hidden;
+    height: 0px;
+  }
+
+  .logo2 {
+    visibility: visible;
+    height: 12vh;
+  }
+}
+
+@media screen and (max-device-width: 1200px) {
+    .logo1 {
+      visibility: visible;
+      height: 20vh;
+    }
+
+    .logo2 {
+      visibility: hidden;
+      height: 0vh;
     }
 }

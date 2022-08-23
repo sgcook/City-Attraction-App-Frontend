@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+// eslint-disable-next-line import/no-named-as-default
 import CuisineForm from "./CuisineForm";
 
 const EatDrinkForm = ({ query, setQuery }) => {
@@ -9,96 +10,85 @@ const EatDrinkForm = ({ query, setQuery }) => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const initialState = {
-    restaurant: false,
-    cafe: false,
-    pubsBar: false,
-    any: false,
-  };
-  const [fields, setFields] = useState(initialState);
+  // const initialState = {
+  //   restaurant: false,
+  //   cafe: false,
+  //   pubsBar: false,
+  //   any: false,
+  // };
+  // const [fields, setFields] = useState(initialState);
   const [cuisine, setCuisine] = useState(false);
-  const handleOnChange = (e) => {
-    const { name } = e.target;
-    const { checked } = e.target;
-    if (name === "any") {
-      setFields({ ...initialState, any: true });
-    } else {
-      setFields((previousState) => {
-        return { ...previousState, [name]: checked, any: false };
-      });
-    }
-  };
+  // const handleOnChange = (e) => {
+  //   const { name } = e.target;
+  //   const { checked } = e.target;
+  //   if (name === "any") {
+  //     setFields({ ...initialState, any: true });
+  //   } else {
+  //     setFields((previousState) => {
+  //       return { ...previousState, [name]: checked, any: false };
+  //     });
+  //   }
+  // };
   return (
-    <div>
+    <div className="eatdrinktype">
+      <p>I'm looking for...</p>
+      {/*Might be why restaurants is such large font */}
       <label htmlFor="eatdrinktype" className="eatdrinktype">
-        <p>I'm looking for...</p>
         Restaurants
         <input
           type="checkbox"
           id="restaurant"
           name="restaurant"
-          checked={fields.restaurant}
+          // checked={fields.restaurant}
           value="restaurant"
           onChange={(e) => {
             setQuery({
               ...query,
               restaurantType: [...query.restaurantType, e.target.value],
             });
-            handleOnChange(e);
+            // handleOnChange(e);
             setCuisine(!cuisine);
           }}
         />
         <br />
-        Cafés
-        <input
-          type="checkbox"
-          id="cafe"
-          name="cafe"
-          value="cafe"
-          checked={fields.cafe}
-          onChange={(e) => {
-            setQuery({
-              ...query,
-              restaurantType: [...query.restaurantType, e.target.value],
-            });
-            handleOnChange(e);
-          }}
-        />
+        <label htmlFor="cafe" className="cafe">
+          Cafés
+          <input
+            type="checkbox"
+            id="cafe"
+            name="cafe"
+            value="cafe"
+            // checked={fields.cafe}
+            onChange={(e) => {
+              setQuery({
+                ...query,
+                restaurantType: [...query.restaurantType, e.target.value],
+              });
+              // handleOnChange(e);
+            }}
+          />
+        </label>
         <br />
-        Pubs/Bars
-        <input
-          type="checkbox"
-          id="pubsBar"
-          name="pubsBar"
-          value="pubsBar"
-          checked={fields.pubsBar}
-          onChange={(e) => {
-            setQuery({
-              ...query,
-              restaurantType: [...query.restaurantType, e.target.value],
-            });
-            handleOnChange(e);
-          }}
-        />
+        <label htmlFor="pubsBar" className="pubsBar">
+          Pubs/Bars
+          <input
+            type="checkbox"
+            id="pubsBar"
+            name="pubsBar"
+            value="pubsBar"
+            // checked={fields.pubsBar}
+            onChange={(e) => {
+              setQuery({
+                ...query,
+                restaurantType: [...query.restaurantType, e.target.value],
+              });
+              // handleOnChange(e);
+            }}
+          />
+        </label>
         <br />
-        Any
-        <input
-          type="checkbox"
-          id="any"
-          name="any"
-          value="any"
-          checked={fields.any}
-          onChange={(e) => {
-            setQuery({
-              ...query,
-              restaurantType: [...query.restaurantType, e.target.value],
-            });
-            handleOnChange(e);
-            setCuisine(!cuisine);
-          }}
-        />
+        {cuisine && <CuisineForm query={query} setQuery={setQuery} />}
       </label>
-      {cuisine && <CuisineForm query={query} setQuery={setQuery} />}
     </div>
   );
 };
