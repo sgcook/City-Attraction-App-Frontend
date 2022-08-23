@@ -138,7 +138,7 @@ const Home = ({ setMarkers }) => {
         <label htmlFor="interest-in" className="interested-in">
           <p>I'm interested in...</p>
           <label htmlFor="eatingdrinking" className="eatingdrinking">
-            Eating/Drinking
+            <b>Eating/Drinking</b>
             <input
               type="checkbox"
               id="eatingdrinking"
@@ -148,7 +148,6 @@ const Home = ({ setMarkers }) => {
               onChange={toggleSelection}
             />
           </label>
-          <br />
           {eatingDrinking && (
             <EatDrinkForm
               query={query}
@@ -159,8 +158,9 @@ const Home = ({ setMarkers }) => {
               setCuisineBoxes={setCuisineBoxes}
             />
           )}
+          <br />
           <label htmlFor="attractions" className="attractions">
-            Attractions
+            <b>Attractions</b>
             <input
               type="checkbox"
               id="attractions"

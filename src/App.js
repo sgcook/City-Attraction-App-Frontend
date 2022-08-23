@@ -15,7 +15,7 @@ const App = () => {
       <header className="App-header">
         <style>
           @import
-          url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;900&family=Roboto+Mono:wght@200;400;600&family=Roboto+Slab:wght@400;600;900&family=Source+Sans+Pro:ital,wght@0,400;1,700&display=swap');
+          url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap');
         </style>
         <Navbar markers={markers} />
       </header>
