@@ -142,24 +142,6 @@ const CuisineForm = ({ query, setQuery }) => {
           />
         </label>
         <br />
-        <label htmlFor="caribbean" className="caribbean">
-          Caribbean
-          <input
-            type="checkbox"
-            id="caribbean"
-            name="caribbean"
-            value="caribbean"
-            // checked={fields.caribbean}
-            onChange={(e) => {
-              setQuery({
-                ...query,
-                cuisine: [...query.cuisine, e.target.value],
-              });
-              // handleOnChange(e);
-            }}
-          />
-        </label>
-        <br />
         <label htmlFor="other" className="other">
           Other
           <input
