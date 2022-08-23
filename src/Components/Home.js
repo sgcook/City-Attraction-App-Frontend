@@ -37,6 +37,7 @@ const Home = ({ setMarkers }) => {
   const [eatingDrinkingBoxes, setEatingDrinkingBoxes] =
     useState(initalEatingDrinking);
   const [cuisineBoxes, setCuisineBoxes] = useState(initialCuisine);
+  const [noLink, setNoLink] = useState(false);
 
   const toggleSelection = (e) => {
     if (e.target.name === "attractions") setAttractions((prev) => !prev);
@@ -89,6 +90,16 @@ const Home = ({ setMarkers }) => {
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  const handleOnClick = () => {
+    getPlaces();
+    // } else {
+    //   // eslint-disable-next-line no-alert
+    //   alert(
+    //     "Make sure to pick at least one city, walking length, eating/drinking, restaurant, and attraction!"
+    //   );
+    // }
   };
 
   return (
@@ -182,7 +193,12 @@ const Home = ({ setMarkers }) => {
             <br />
           </label>
         </div>
-        <Link className="navbar-item" to="/itinerary" onClick={getPlaces}>
+        <Link
+          style={noLink ? { pointerEvents: "none" } : null}
+          className="navbar-item"
+          to="/itinerary"
+          onClick={handleOnClick}
+        >
           <button type="submit">Plan my day!</button>
         </Link>
       </form>
