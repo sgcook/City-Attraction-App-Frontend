@@ -177,12 +177,12 @@ const Home = ({ setMarkers }) => {
           )}
           <br />
         </label>
-        <Link className="navbar-item" to="/itinerary">
-          <button type="submit" onClick={getPlaces}>
-            Plan my day!
-          </button>
-        </Link>
       </form>
+      <Link className="navbar-item" to="/itinerary">
+        <button type="submit" onClick={getPlaces}>
+          Plan my day!
+        </button>
+      </Link>
     </div>
   );
 };
