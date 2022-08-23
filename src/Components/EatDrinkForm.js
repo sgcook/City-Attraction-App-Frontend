@@ -32,7 +32,7 @@ const EatDrinkForm = ({ query, setQuery }) => {
   return (
     <div className="eatdrinktype">
       <p>I'm looking for...</p>
-      {/*Might be why restaurants is such large font */}
+      {/* Might be why restaurants is such large font */}
       <label htmlFor="eatdrinktype" className="eatdrinktype">
         Restaurants
         <input

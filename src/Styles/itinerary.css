@@ -37,6 +37,10 @@
 }
 
 @media screen and (min-device-width: 1200px) {
+  .itinerary {
+    margin: 2vh 15vh 0 15vh;
+  }
+
   .map {
     display: flex;
   }
