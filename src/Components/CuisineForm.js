@@ -1,34 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
-const CuisineForm = ({ query, setQuery }) => {
-  useEffect(() => {
-    setQuery({ ...query, cuisine: [] });
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  // const initialState = {
-  //   asian: false,
-  //   britishAmerican: false,
-  //   indian: false,
-  //   european: false,
-  //   vegetarianVegan: false,
-  //   middleEastern: false,
-  //   other: false,
-  //   any: false,
-  // };
-  // const [fields, setFields] = useState(initialState);
-  // const handleOnChange = (e) => {
-  //   const { name } = e.target;
-  //   const { checked } = e.target;
-  //   if (name === "any") {
-  //     setFields({ ...initialState, any: true });
-  //   } else {
-  //     setFields((previousState) => {
-  //       return { ...previousState, [name]: checked, any: false };
-  //     });
-  //   }
-  // };
+const CuisineForm = ({ cuisineBoxes, setCuisineBoxes }) => {
+  const handleOnChange = (e) => {
+    const { name } = e.target;
+    const { checked } = e.target;
+    setCuisineBoxes({ ...cuisineBoxes, [name]: checked });
+  };
 
   return (
     <div className="cuisine">
@@ -41,13 +19,9 @@ const CuisineForm = ({ query, setQuery }) => {
             id="asian"
             name="asian"
             value="asian"
-            // checked={fields.asian}
+            checked={cuisineBoxes.asian}
             onChange={(e) => {
-              setQuery({
-                ...query,
-                cuisine: [...query.cuisine, e.target.value],
-              });
-              // handleOnChange(e);
+              handleOnChange(e);
             }}
           />
         </label>
@@ -59,13 +33,9 @@ const CuisineForm = ({ query, setQuery }) => {
             id="britishAmerican"
             name="britishAmerican"
             value="britishAmerican"
-            // checked={fields.britishAmerican}
+            checked={cuisineBoxes.britishAmerican}
             onChange={(e) => {
-              setQuery({
-                ...query,
-                cuisine: [...query.cuisine, e.target.value],
-              });
-              // handleOnChange(e);
+              handleOnChange(e);
             }}
           />
         </label>
@@ -77,13 +47,9 @@ const CuisineForm = ({ query, setQuery }) => {
             id="indian"
             name="indian"
             value="indian"
-            // checked={fields.indian}
+            checked={cuisineBoxes.indian}
             onChange={(e) => {
-              setQuery({
-                ...query,
-                cuisine: [...query.cuisine, e.target.value],
-              });
-              // handleOnChange(e);
+              handleOnChange(e);
             }}
           />
         </label>
@@ -95,13 +61,9 @@ const CuisineForm = ({ query, setQuery }) => {
             id="european"
             name="european"
             value="european"
-            // checked={fields.european}
+            checked={cuisineBoxes.european}
             onChange={(e) => {
-              setQuery({
-                ...query,
-                cuisine: [...query.cuisine, e.target.value],
-              });
-              // handleOnChange(e);
+              handleOnChange(e);
             }}
           />
         </label>
@@ -113,13 +75,9 @@ const CuisineForm = ({ query, setQuery }) => {
             id="vegetarianVegan"
             name="vegetarianVegan"
             value="vegetarianVegan"
-            // checked={fields.vegetarianVegan}
+            checked={cuisineBoxes.vegetarianVegan}
             onChange={(e) => {
-              setQuery({
-                ...query,
-                cuisine: [...query.cuisine, e.target.value],
-              });
-              // handleOnChange(e);
+              handleOnChange(e);
             }}
           />
         </label>
@@ -131,13 +89,9 @@ const CuisineForm = ({ query, setQuery }) => {
             id="middleEastern"
             name="middleEastern"
             value="middleEastern"
-            // checked={fields.middleEastern}
+            checked={cuisineBoxes.middleEastern}
             onChange={(e) => {
-              setQuery({
-                ...query,
-                cuisine: [...query.cuisine, e.target.value],
-              });
-              // handleOnChange(e);
+              handleOnChange(e);
             }}
           />
         </label>
@@ -149,13 +103,9 @@ const CuisineForm = ({ query, setQuery }) => {
             id="other"
             name="other"
             value="other"
-            // checked={fields.other}
+            checked={cuisineBoxes.other}
             onChange={(e) => {
-              setQuery({
-                ...query,
-                cuisine: [...query.cuisine, e.target.value],
-              });
-              // handleOnChange(e);
+              handleOnChange(e);
             }}
           />
         </label>
@@ -166,12 +116,16 @@ const CuisineForm = ({ query, setQuery }) => {
 };
 
 CuisineForm.propTypes = {
-  query: PropTypes.shape({
-    city: PropTypes.string.isRequired,
-    mobility: PropTypes.string.isRequired,
-    cuisine: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  cuisineBoxes: PropTypes.shape({
+    asian: PropTypes.bool.isRequired,
+    britishAmerican: PropTypes.bool.isRequired,
+    indian: PropTypes.bool.isRequired,
+    european: PropTypes.bool.isRequired,
+    vegetarianVegan: PropTypes.bool.isRequired,
+    middleEastern: PropTypes.bool.isRequired,
+    other: PropTypes.bool.isRequired,
   }).isRequired,
-  setQuery: PropTypes.func.isRequired,
+  setCuisineBoxes: PropTypes.func.isRequired,
 };
 
 export default CuisineForm;
