@@ -100,7 +100,6 @@ const Home = ({ setMarkers }) => {
         <img src={logo2} alt="CityTreklogo" height="120" className="logo2" />
       </div>
       <p>We'll plan your walking tour of the city. Where are you going?</p>
-<<<<<<< HEAD
       <form className="home-form">
         <label htmlFor="home-city" className="home-city">
           <p>I'm going to...</p>
