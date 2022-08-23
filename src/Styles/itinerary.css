@@ -8,12 +8,13 @@
 
 .map-text {
   margin: 2vh auto;
+  padding: 1vh;
 }
 
 .map-container {
   min-height: 45vh;
   max-height: 55vh;
-  width: 80%;
+  width: 95%;
   margin: 0 auto;
 }
 
