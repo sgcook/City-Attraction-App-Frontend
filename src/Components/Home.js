@@ -104,6 +104,8 @@ const Home = ({ setMarkers }) => {
         <label htmlFor="home-city" className="home-city">
           <p>I'm going to...</p>
           <select
+            required
+            name="home-city"
             className="select"
             defaultValue="DEFAULT"
             onChange={(e) => setQuery({ ...query, city: e.target.value })}
@@ -180,12 +182,7 @@ const Home = ({ setMarkers }) => {
         </label>
       </form>
       <Link className="navbar-item" to="/itinerary">
-        <button
-          type="submit"
-          onClick={() => {
-            getPlaces();
-          }}
-        >
+        <button type="submit" onClick={getPlaces}>
           Plan my day!
         </button>
       </Link>
