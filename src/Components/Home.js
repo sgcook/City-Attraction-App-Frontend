@@ -13,6 +13,13 @@ const Home = ({ setMarkers }) => {
   const [eatingDrinking, setEatingDrinking] = useState(false);
   const [attractions, setAttractions] = useState(false);
   const [query, setQuery] = useState({});
+  const initialAttraction = {
+    museumsGalleries: false,
+    parksGardens: false,
+    landmarksMonuments: false,
+  };
+  const [attractionBoxes, setAttractionBoxes] = useState(initialAttraction);
+
   const toggleSelection = (e) => {
     if (e.target.name === "attractions") setAttractions((prev) => !prev);
     if (e.target.name === "eatingdrinking") setEatingDrinking((prev) => !prev);
@@ -116,7 +123,14 @@ const Home = ({ setMarkers }) => {
               onChange={toggleSelection}
             />
           </label>
-          {attractions && <AttractionsForm query={query} setQuery={setQuery} />}
+          {attractions && (
+            <AttractionsForm
+              query={query}
+              setQuery={setQuery}
+              attractionBoxes={attractionBoxes}
+              setAttractionBoxes={setAttractionBoxes}
+            />
+          )}
           <br />
         </label>
         {console.log(query)}

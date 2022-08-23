@@ -8,24 +8,14 @@ const AttractionsForm = ({ query, setQuery }) => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  // const initialState = {
-  //   museumsGalleries: false,
-  //   parksGardens: false,
-  //   landmarksMonuments: false,
-  //   any: false,
-  // };
-  // const [fields, setFields] = useState(initialState);
-  // const handleOnChange = (e) => {
-  //   const { name } = e.target;
-  //   const { checked } = e.target;
-  //   if (name === "any") {
-  //     setFields({ ...initialState, any: true });
-  //   } else {
-  //     setFields((previousState) => {
-  //       return { ...previousState, [name]: checked, any: false };
-  //     });
-  //   }
-  // };
+  const handleOnChange = (e) => {
+    const { name } = e.target;
+    const { checked } = e.target;
+      setFields((previousState) => {
+        return { ...previousState, [name]: checked };
+      });
+    }
+  };
 
   const addRemoveQuery = (e) => {
     setQuery({
