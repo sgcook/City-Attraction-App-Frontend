@@ -3,75 +3,75 @@
 }
 
 body {
-    background-color: gold;
-    text-align: center;
-    color: black;
-    font-family: 'Source Sans Pro', sans-serif;
+  background-color: gold;
+  text-align: center;
+  color: black;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 body {
-    background-color: gold;
+  background-color: gold;
 }
 
 .home {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 40px;
-    padding-right: 40px;
-    max-width: 600px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 40px;
+  padding-right: 40px;
+  max-width: 600px;
 }
 
 .pathway {
-    text-align: right;
-    color: black;
-    font-family: 'Source Sans Pro', sans-serif;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 40px;
-    padding-right: 40px;
-    max-width: 600px;
+  text-align: right;
+  color: black;
+  font-family: 'Source Sans Pro', sans-serif;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 40px;
+  padding-right: 40px;
+  max-width: 600px;
 }
 
 .navbar {
-    text-align: center;
-    padding: 0;
+  text-align: center;
+  padding: 0;
 }
 
 .select {
-    text-align: center;
-    display: inline-block;
-    border-radius: 10px;
-    width: 110px;
-    height: 25px;
+  text-align: center;
+  display: inline-block;
+  border-radius: 10px;
+  width: 110px;
+  height: 25px;
 }
 
 input {
-    vertical-align: middle;
-    float: right;
+  vertical-align: middle;
+  float: right;
 }
 
 .cuisine {
-    display: inline;
+  display: inline;
 }
 
 button {
-    border-radius: 10px;
-    height: 25px;
-    margin: 10px;
+  border-radius: 10px;
+  height: 25px;
+  margin: 10px;
 }
 
 .navbar-item {
-    padding: 15px;
-    display: inline-block;
-    color: black;
-    font-size: 20px;
-    text-decoration: none;
+  padding: 15px;
+  display: inline-block;
+  color: black;
+  font-size: 20px;
+  text-decoration: none;
 }
     
 .navbar-links {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .home-form {
@@ -95,24 +95,24 @@ button {
 }
 
 .checkbox {
-    display: block;
-    line-height: 28px;
-    text-align: center;
+  display: block;
+  line-height: 28px;
+  text-align: center;
 }
 
 @media screen and (min-device-width: 1200px) {
-    .home {
+  .home {
     max-width: 600px;
     padding: 0;
-    }
+  }
 
-    .home-form {
+  .home-form {
     padding-right: 20vh;
     padding-left: 20vh;
     padding-bottom: 5vh;
     border: 5px solid rgb(252, 255, 232);
     border-radius: 10px;
-    }
+  }
 
     .about {
     border: 4px solid rgb(252, 255, 232);
@@ -125,7 +125,7 @@ button {
 
     .navbar-item {
     text-align: center;
-    }
+  }
 
     .logo1 {
     visibility: hidden;

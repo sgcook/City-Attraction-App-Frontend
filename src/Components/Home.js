@@ -51,7 +51,7 @@ const Home = ({ setMarkers }) => {
   return (
     <div className="home">
       <div className="logo1">
-       <img src={logo1} alt="CityTreklogo" height="120" className="logo1" />
+        <img src={logo1} alt="CityTreklogo" height="120" className="logo1" />
       </div>
       <div className="logo2">
         <img src={logo2} alt="CityTreklogo" height="120" className="logo2" />
@@ -119,6 +119,7 @@ const Home = ({ setMarkers }) => {
           {attractions && <AttractionsForm query={query} setQuery={setQuery} />}
           <br />
         </label>
+        {console.log(query)}
       </form>
       <Link className="navbar-item" to="/itinerary">
         <button
