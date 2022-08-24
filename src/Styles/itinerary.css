@@ -1,9 +1,9 @@
 .itinerary {
   text-align: center;
   border: 5px solid rgb(252, 255, 232);
-  margin: 10px;
+  margin: 2vh;
   border-radius: 10px;
-  padding: 20px;
+  padding: 2vh;
 }
 
 .map-text {
@@ -40,20 +40,21 @@
 
 @media screen and (min-device-width: 1200px) {
   .itinerary {
-    margin: 2vh 15vh 0 15vh;
+    margin: 2vh 2vh 2vh 2vh;
   }
 
   .map {
     display: flex;
+    flex-direction: column;
   }
   
   .map-text {
-    width: 25%;
+    width: 90%;
     }
   
   .map-container {
     height: 80vh;
-    width: 70%;
+    width: 90%;
   }
 
   .map-button {
