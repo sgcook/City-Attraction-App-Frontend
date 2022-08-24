@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useEffect, useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import qs from "qs";
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import axios from "axios";
 import EatDrinkForm from "./EatDrinkForm";
@@ -30,6 +30,7 @@ const Home = ({ setMarkers }) => {
     other: false,
   };
 
+  const navigate = useNavigate();
   const [eatingDrinking, setEatingDrinking] = useState(false);
   const [attractions, setAttractions] = useState(false);
   const [query, setQuery] = useState({});
@@ -89,6 +90,25 @@ const Home = ({ setMarkers }) => {
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  const handleOnClick = (e) => {
+    e.preventDefault();
+    if (
+      query.restaurantType.length === 0 ||
+      query.attractionType.length === 0 ||
+      query.cuisine.length === 0 ||
+      query.city == null ||
+      query.mobility == null
+    ) {
+      console.log(query);
+      // eslint-disable-next-line no-alert
+      alert("Please select one of each category!");
+    } else {
+      console.log(query);
+      getPlaces();
+      navigate("/itinerary");
+    }
   };
 
   return (
@@ -182,7 +202,7 @@ const Home = ({ setMarkers }) => {
             <br />
           </label>
         </div>
-        <Link className="navbar-item" to="/itinerary" onClick={getPlaces}>
+        <Link className="navbar-item" to="/itinerary" onClick={handleOnClick}>
           <button type="submit">Plan my day!</button>
         </Link>
       </form>
