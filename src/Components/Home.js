@@ -106,8 +106,8 @@ const Home = ({ setMarkers }) => {
       alert("Please select one of each category!");
     } else {
       console.log(query);
-      getPlaces();
       navigate("/itinerary");
+      getPlaces();
     }
   };
 

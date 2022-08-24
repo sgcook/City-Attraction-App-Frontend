@@ -7,11 +7,11 @@ By selecting your preferred city, mobility, eating and drinking, and attractions
 
 ## Desktop Version:
 
-![desktop version]()
+![desktop version](./desktop.png)
 
 ## Mobile Version:
 
-![mobile version]()
+![mobile version](./mobile.png)
 
 ## How to use:
 
@@ -42,6 +42,9 @@ See `$https://github.com/EmmaWenham/City-Attraction-App` for the backend
 
 ## If more time...
 
--
+- Add a wildcard button that plans the user's day for them with random selections.
+- Filter selections by price and rating.
+- Add events such as shows, sports games, and live music.
+- Sign in and be able to save routes.
 
 Authors: Emma Wenham, Maisie James, Ross Mcnabb, and Sara Cook
