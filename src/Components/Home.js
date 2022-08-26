@@ -64,11 +64,10 @@ const Home = ({ setMarkers }) => {
   }, [attractionBoxes, eatingDrinkingBoxes]);
 
   const getPlaces = () => {
-    // const baseUrl = dev ? "localhost:3000" : "actualURL";
     const data = "";
     const config = {
       method: "get",
-      url: `http://localhost:3001/pathway`,
+      url: "https://citytrek-server.herokuapp.com/pathway",
       headers: {},
       data,
       params: {
@@ -101,11 +100,9 @@ const Home = ({ setMarkers }) => {
       query.city == null ||
       query.mobility == null
     ) {
-      console.log(query);
       // eslint-disable-next-line no-alert
       alert("Please select one of each category!");
     } else {
-      console.log(query);
       navigate("/itinerary");
       getPlaces();
     }
