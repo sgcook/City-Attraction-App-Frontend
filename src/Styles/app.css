@@ -47,8 +47,28 @@ body {
 }
 
 input {
+  
+  -webkit-appearance : none;
+  appearance         : none;
+  width              : 15px;
+  height             : 15px;
+  margin             : calc(0.75em - 11px) 0.25rem 0 0;
   vertical-align: middle;
   float: right;
+  border             : 2px solid rgb(125, 124, 124);
+  border-radius      : 4px;
+  background         : #fff no-repeat center center;
+}
+
+input:where(:active:not(:disabled), :focus){
+  border-color : rgb(250, 0, 0);
+  outline      : none;
+}
+
+input[type="checkbox"]:checked{
+  border-color: rgb(125, 124, 124);
+  background-image : url('../checkmark.svg');
+  background-size: contain;
 }
 
 .cuisine {
