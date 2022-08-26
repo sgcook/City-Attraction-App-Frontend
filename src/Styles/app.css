@@ -47,17 +47,16 @@ body {
 }
 
 input {
-  
-  -webkit-appearance : none;
-  appearance         : none;
-  width              : 15px;
-  height             : 15px;
-  margin             : calc(0.75em - 11px) 0.25rem 0 0;
-  vertical-align: middle;
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+  width: 15px;
+  height: 15px;
+  vertical-align: -2px;
   float: right;
-  border             : 2px solid rgb(125, 124, 124);
-  border-radius      : 4px;
-  background         : #fff no-repeat center center;
+  border: 2px solid rgb(125, 124, 124);
+  border-radius: 4px;
+  background: #fff no-repeat center center;
 }
 
 input:where(:active:not(:disabled), :focus){
@@ -112,12 +111,6 @@ button {
   margin-top: 4vh;
   margin-right: 3vh;
   margin-left: 3vh;
-}
-
-.checkbox {
-  display: block;
-  line-height: 28px;
-  text-align: center;
 }
 
 @media screen and (min-device-width: 1200px) {
