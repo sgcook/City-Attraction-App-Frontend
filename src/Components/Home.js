@@ -67,7 +67,7 @@ const Home = ({ setMarkers }) => {
     const data = "";
     const config = {
       method: "get",
-      url: "http://citytrekserver-env.eba-5ms5yndu.eu-west-2.elasticbeanstalk.com/pathway",
+      url: "https://citytrekserver-env.com/pathway",
       headers: {},
       data,
       params: {
